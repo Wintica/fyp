@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empathy Simulation Prototype</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Blinking Eyes Animation Styles */
+        .blinking-eyes-container {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 80px;
+            z-index: 10;
+        }
+
+        .eye {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .pupil {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            background: rgba(0, 0, 0);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pupil-move 8s ease-in-out infinite;
+        }
+
+        .eyelid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(25, 14, 47);
+            border-radius: 50%;
+            transform: scaleY(0);
+            transform-origin: top;
+            animation: blink 4s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 45%, 55%, 100% {
+                transform: scaleY(0);
+            }
+            50% {
+                transform: scaleY(1);
+            }
+        }
+
+        @keyframes pupil-move {
+            0%, 100% { transform: translate(-50%, -50%); }
+            25% { transform: translate(-30%, -60%); }
+            50% { transform: translate(-70%, -40%); }
+            75% { transform: translate(-30%, -30%); }
+        }
+
+        /* Different timing for left and right eyes */
+        .left-eye .eyelid {
+            animation-delay: 0s;
+        }
+
+        .right-eye .eyelid {
+            animation-delay: 0s;
+        }
+
+        /* Accessibility: Respect reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            .eye, .pupil, .eyelid {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-950 to-violet-900 min-h-screen">
+    <!-- Navigation -->
+    <nav class="sticky top-0 bg-gray-900/80 backdrop-blur-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <span class="text-white text-xl font-bold">Through Their Lens</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#services" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Services</a>
+                        <a href="#footer" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id= "home" class="relative h-[80vh] flex items-center justify-center">
+        <!-- Blinking Eyes Animation -->
+        <div class="blinking-eyes-container">
+            <div class="eye left-eye">
+                <div class="eyelid"></div>
+                <div class="pupil"></div>
+            </div>
+            <div class="eye right-eye">
+                <div class="eyelid"></div>
+                <div class="pupil"></div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 animate-float">
+                Through Their Lens
+            </h1>
+            <p class="text-xl text-gray-300 mb-8">
+                Step Into Their World
+            </p>
+            <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                Get Started
+            </button>
+        </div>
+
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden z-0">
+            <div class="absolute w-64 h-64 bg-purple-500/20 rounded-full blur-3xl -top-32 -left-32"></div>
+            <div class="absolute w-64 h-64 bg-blue-500/20 rounded-full blur-3xl -bottom-32 -right-32"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id= "services" class="py-20 bg-gray-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+               
+                <!-- Feature Card 1 -->
+                <div class="bg-gray-800/50 p-6 rounded-xl backdrop-blur-lg">
+                    <div class="w-12 h-12 bg-purple-600 rounded-lg mb-4 flex items-center justify-center">
+                        <img src="/images/Interactive-icon.png" 
+                             alt="Interactive Empathy Simulation" 
+                             width="24" 
+                             height="24"
+                             class="w-6 h-6 filter brightness-0 invert"
+                             loading="lazy">
+                    </div>
+                    <h3 class="text-white text-xl font-semibold mb-2">Interactive Empathy Simulation</h3>
+                    <p class="text-gray-400">Role-playing scenarios to simulate caregiver-recipient interactions and foster emotional engagement</p>
+                </div>
+
+                <!-- Feature Card 2 -->
+                <div class="bg-gray-800/50 p-6 rounded-xl backdrop-blur-lg">
+                    <div class="w-12 h-12 bg-blue-600 rounded-lg mb-4 flex items-center justify-center">
+                        <img src="/images/Learning-icon.png" 
+                             alt="Personalized Learning Experiences" 
+                             width="24" 
+                             height="24"
+                             class="w-6 h-6 filter brightness-0 invert"
+                             loading="lazy">
+                    </div>
+                    <h3 class="text-white text-xl font-semibold mb-2">Personalized Learning Experiences</h3>
+                    <p class="text-gray-400">Offer customizable modules to address individual strengths and areas for improvement</p>
+                </div>
+
+                <!-- Feature Card 3 -->
+                <div class="bg-gray-800/50 p-6 rounded-xl backdrop-blur-lg">
+                    <div class="w-12 h-12 bg-green-600 rounded-lg mb-4 flex items-center justify-center">
+                        <img src="/images/Resource-icon.png" 
+                             alt="Easy to Use" 
+                             width="24" 
+                             height="24"
+                             class="w-6 h-6 filter brightness-0 invert"
+                             loading="lazy">
+                    </div>
+                    <h3 class="text-white text-xl font-semibold mb-2">Resource Hub</h3>
+                    <p class="text-gray-400">Provide access to curated articles, videos, tools, and links to external support networks</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id= "footer" class="bg-gray-900/80 text-gray-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Information</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Product</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition-colors">Community</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Career</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Our Story</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition-colors">Getting Started</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <span class="sr-only">Twitter</span>
+                            <img src="/images/twitter-logo.png" 
+                                 alt="Twitter" 
+                                 width="24" 
+                                 height="24"
+                                 class="w-6 h-6 filter brightness-75"
+                                 loading="lazy">
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <span class="sr-only">Instagram</span>
+                            <img src="/images/instagram-logo.png" 
+                                 alt="Instagram" 
+                                 width="24" 
+                                 height="24"
+                                 class="w-6 h-6 filter brightness-75"
+                                 loading="lazy">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p>&copy; 2024 Through Their Lens. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
