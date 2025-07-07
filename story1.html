@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Through Their Lens - Character Selection</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white min-h-screen">
+
+  <!-- Navigation Bar -->
+  <nav class="bg-gray-900">
+    <div class="max-w-7xl mx-auto flex items-center justify-between py-6 px-6">
+      <span class="text-white text-2xl font-bold">Through Their Lens</span>
+      <ul class="flex space-x-8">
+        <li><a href="/home.html" class="text-neutral-100 text-lg hover:text-white">Home</a></li>
+        <li><a href="#" class="text-white text-lg hover:text-neutral-100">About</a></li>
+        <li><a href="#" class="text-neutral-100 text-lg hover:text-white">Services</a></li>
+        <li><a href="#" class="text-neutral-100 text-lg hover:text-white">Contacts</a></li>
+      </ul>
+    </div>
+  </nav>
+
+    <!-- Character Story Section -->
+  <section class="max-w-7xl mx-auto bg-white rounded-3xl shadow-lg mt-10 px-8 py-10">
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+      <!-- Avatar -->
+      <img src="images/avatar1.jpg" alt="Mrs Amelia Morgan" class="w-32 h-32 rounded-full border-4 border-violet-200 shadow-lg bg-zinc-200 object-cover mb-4 md:mb-0" />
+      <!-- Story Info -->
+      <div>
+        <h2 class="text-xl font-bold mb-2">Mrs Amelia Morgan’s story</h2>
+        <p class="text-gray-700 mb-1">
+          <span class="font-bold">Amelia, 72</span>, was diagnosed with moderate Alzheimer’s disease two years ago. She lives with her daughter Sarah, who has become her primary caregiver.
+        </p>
+        <p class="text-gray-700">
+          Amelia was once an independent teacher and mother who prided herself on her organizational skills and nurturing nature.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapters Section -->
+  <section class="max-w-7xl mx-auto mt-8 space-y-6">
+    <!-- Chapter 1 -->
+    <div class="flex bg-violet-100 rounded-2xl shadow-md p-6 items-center gap-6">
+      <div class="w-24 h-24 bg-gray-300 rounded-xl flex-shrink-0"></div>
+      <div class="flex-1">
+        <h3 class="text-xl font-bold text-violet-900 mb-2">Chapter 1 of 3: Morning Routine</h3>
+        <p class="text-gray-800 mb-2">
+          Vivamus id sem facilisis, faucibus quam vel, venenatis mauris. Nulla vitae blandit velit, quis accumsan diam. Cras ut neque eget est hendrerit cursus sed non quam.
+        </p>
+        <a href="/chapter1.html" class="inline-block bg-violet-900 text-white rounded-2xl px-6 py-2 font-semibold hover:bg-violet-800 transition">Start</a>
+      </div>
+    </div>
+    <!-- Chapter 2 (Locked) -->
+    <div class="flex bg-violet-50 rounded-2xl shadow-md p-6 items-center gap-6 opacity-60">
+      <div class="w-24 h-24 bg-gray-300 rounded-xl flex-shrink-0"></div>
+      <div class="flex-1">
+        <h3 class="text-xl font-bold text-violet-900 mb-2">Chapter 2 of 3: Afternoon Hobbies</h3>
+        <p class="text-gray-800 mb-2">
+          Maecenas sem quam, congue nec elementum dictum, cursus eget nibh. Nam consectetur volutpat dolor sed elementum.
+        </p>
+        <button class="bg-gray-400 text-white rounded-2xl px-6 py-2 font-semibold cursor-not-allowed" disabled>Locked</button>
+      </div>
+    </div>
+    <!-- Chapter 3 (Locked) -->
+    <div class="flex bg-violet-50 rounded-2xl shadow-md p-6 items-center gap-6 opacity-60">
+      <div class="w-24 h-24 bg-gray-300 rounded-xl flex-shrink-0"></div>
+      <div class="flex-1">
+        <h3 class="text-xl font-bold text-violet-900 mb-2">Chapter 3 of 3</h3>
+        <p class="text-gray-800 mb-2">
+          <!-- Placeholder for future content -->
+        </p>
+        <button class="bg-gray-400 text-white rounded-2xl px-6 py-2 font-semibold cursor-not-allowed" disabled>Locked</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="max-w-7xl mx-auto mt-16 mb-4 px-6 text-center text-gray-500 text-sm">
+    &copy; 2025 Through Their Lens. All rights reserved.
+  </footer>
+</body>
+</html>
