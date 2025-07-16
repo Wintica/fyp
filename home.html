@@ -4,90 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empathy Simulation Prototype</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* Blinking Eyes Animation Styles */
-        .blinking-eyes-container {
-            position: absolute;
-            top: 25%;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 80px;
-            z-index: 10;
-        }
-
-        .eye {
-            position: relative;
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-        }
-
-        .pupil {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 25px;
-            height: 25px;
-            background: rgba(0, 0, 0);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            animation: pupil-move 8s ease-in-out infinite;
-        }
-
-        .eyelid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(25, 14, 47);
-            border-radius: 50%;
-            transform: scaleY(0);
-            transform-origin: top;
-            animation: blink 4s ease-in-out infinite;
-        }
-
-        @keyframes blink {
-            0%, 45%, 55%, 100% {
-                transform: scaleY(0);
-            }
-            50% {
-                transform: scaleY(1);
-            }
-        }
-
-        @keyframes pupil-move {
-            0%, 100% { transform: translate(-50%, -50%); }
-            25% { transform: translate(-30%, -60%); }
-            50% { transform: translate(-70%, -40%); }
-            75% { transform: translate(-30%, -30%); }
-        }
-
-        .left-eye .eyelid {
-            animation-delay: 0s;
-        }
-
-        .right-eye .eyelid {
-            animation-delay: 0s;
-        }
-
-        /* Accessibility: Respect reduced motion preferences */
-        @media (prefers-reduced-motion: reduce) {
-            .eye, .pupil, .eyelid {
-                animation: none !important;
-            }
-        }
-    </style>
+    <link href="./dist/styles.css" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-br from-gray-950 to-violet-900 min-h-screen">
 
@@ -142,12 +59,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                
-               <a href="/character.html" class="block hover:shadow-lg transition-shadow">
+               <a href="character.html" class="block hover:shadow-lg transition-shadow">
                
                 <!-- Feature Card 1 -->
                 <div class="bg-gray-800/50 p-6 rounded-xl backdrop-blur-lg border-white border-4">
                     <div class="w-12 h-12 bg-purple-600 rounded-lg mb-4 flex items-center justify-center">
-                    <img src="/images/Interactive-icon.png" 
+                    <img src="images/Interactive-icon.png" 
                         alt="Interactive Empathy Simulation" 
                         width="24" 
                         height="24"
@@ -163,7 +80,7 @@
                 <!-- Feature Card 2 -->
                 <div class="bg-gray-800/50 p-6 rounded-xl backdrop-blur-lg border-white border-4">
                     <div class="w-12 h-12 bg-blue-600 rounded-lg mb-4 flex items-center justify-center">
-                        <img src="/images/Learning-icon.png" 
+                        <img src="images/Learning-icon.png" 
                              alt="Personalized Learning Experiences" 
                              width="24" 
                              height="24"
@@ -177,7 +94,7 @@
                 <!-- Feature Card 3 -->
                 <div class="bg-gray-800/50 p-6 rounded-xl backdrop-blur-lg border-white border-4">
                     <div class="w-12 h-12 bg-green-600 rounded-lg mb-4 flex items-center justify-center">
-                        <img src="/images/Resource-icon.png" 
+                        <img src="images/Resource-icon.png" 
                              alt="Easy to Use" 
                              width="24" 
                              height="24"
@@ -224,7 +141,7 @@
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-white">
                             <span class="sr-only">Twitter</span>
-                            <img src="/images/twitter-logo.png" 
+                            <img src="images/twitter-logo.png" 
                                  alt="Twitter" 
                                  width="24" 
                                  height="24"
@@ -233,7 +150,7 @@
                         </a>
                         <a href="#" class="text-gray-400 hover:text-white">
                             <span class="sr-only">Instagram</span>
-                            <img src="/images/instagram-logo.png" 
+                            <img src="images/instagram-logo.png" 
                                  alt="Instagram" 
                                  width="24" 
                                  height="24"
