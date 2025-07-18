@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Through Their Lens</title>
+    <link href="./dist/styles.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-gray-950 to-violet-900 min-h-screen flex flex-col">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-900">
+        <div class="max-w-7xl mx-auto flex items-center justify-between py-6 px-6">
+            <span class="text-white text-2xl font-bold">Through Their Lens</span>
+            <ul class="flex space-x-8">
+                <li><a href="index.html" class="text-neutral-100 text-lg hover:text-white">Home</a></li>
+                <li><a href="#" class="text-white text-lg hover:text-neutral-100">About</a></li>
+                <li><a href="#" class="text-neutral-100 text-lg hover:text-white">Services</a></li>
+                <li><a href="#footer" class="text-neutral-100 text-lg hover:text-white">Contacts</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Login Form Section -->
+    <main class="flex-1 flex items-center justify-center relative">
+        <!-- Background -->
+        <div class="absolute inset-0 overflow-hidden z-0">
+            <div class="absolute w-64 h-64 bg-purple-500/20 rounded-full blur-3xl -top-32 -left-32"></div>
+            <div class="absolute w-64 h-64 bg-blue-500/20 rounded-full blur-3xl -bottom-32 -right-32"></div>
+        </div>
+
+        <!-- Login Form -->
+        <div class="relative z-10 max-w-md w-full bg-gray-900/75 p-8 rounded-2xl shadow-lg  border-white/20 backdrop-blur-md">
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">Sign In to Your Account</h2>
+            <form>
+                <div class="mb-4">
+                    <label for="email" class="block text-white text-lg mb-2">Email</label>
+                    <input type="email" id="email" name="email" autocomplete="username"
+                        class="w-full p-3 rounded bg-gray-800 text-white placeholder-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                        required placeholder="Enter your email">
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block text-white text-lg mb-2">Password</label>
+                    <input type="password" id="password" name="password" autocomplete="current-password"
+                        class="w-full p-3 rounded bg-gray-800 text-white placeholder-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                        required placeholder="Enter your password">
+                </div>
+                <button type="submit"
+                    class="w-full py-3 px-8 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-full transition-all duration-300 transform hover:scale-105">
+                    Log In
+                </button>
+            </form>
+            <p class="text-gray-400 text-center mt-6">
+                Don't have an account?
+                <a href="#" class="text-purple-400 hover:underline">Sign Up</a>
+            </p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-gray-900/80 text-gray-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Information</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Product</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition-colors">Community</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Career</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Our Story</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition-colors">Getting Started</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <span class="sr-only">Twitter</span>
+                            <img src="images/twitter-logo.png"
+                                 alt="Twitter"
+                                 width="24"
+                                 height="24"
+                                 class="w-6 h-6 filter brightness-75"
+                                 loading="lazy">
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <span class="sr-only">Instagram</span>
+                            <img src="images/instagram-logo.png"
+                                 alt="Instagram"
+                                 width="24"
+                                 height="24"
+                                 class="w-6 h-6 filter brightness-75"
+                                 loading="lazy">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p>&copy; 2024 Through Their Lens. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
