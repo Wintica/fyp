@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Through Their Lens - Introduction</title>
+  <title>Through Their Lens - Chapter 1</title>
   <link href="../dist/styles.css" rel="stylesheet">
 </head>
-<body class="bg-gray-200 min-h-screen relative">
+<body class="bg-black min-h-screen flex flex-col">
+
 
   <!-- Navigation Bar -->
   <nav class="bg-gray-900 relative z-10">
@@ -20,3 +21,47 @@
       </ul>
     </div>
   </nav>
+
+  <!-- Main Content  -->
+  <div class="flex-1 flex flex-col relative z-20">
+    <!-- Profile Icon -->
+    <div class="absolute top-8 right-8 z-20">
+      <a 
+        href="/profile.html"
+        class="flex items-center justify-center bg-white rounded-full w-16 h-16 shadow-lg hover:bg-blue-700 transition"
+        style="padding: 2px;"
+      >
+        <img 
+          src="/images/profile.png"
+          alt="Profile Icon"
+          class="w-full h-full object-contain"
+        />
+      </a>
+    </div>
+   
+     <a href="2.html" class="fixed inset-x-0 top-40 bottom-0 w-full h-[calc(100vh-10rem)] z-0 block">
+        <img 
+        src="../images/avatar2.png" 
+        alt="Faded Avatar Background"
+        class="w-full h-full bg-black object-contain opacity-20 select-none object-center"
+        />
+     </a>
+
+         <a href="4.html" 
+      class="fixed inset-x-0 flex justify-center z-0" style="top: 40vh;">
+      <div class="bg-white rounded-xl shadow-lg max-w-7xl px-16 py-12 mx-8 text-center">
+        <p class="text-black text-2xl font-semibold px-8 py-4">
+         **Click to Blink**
+        </p>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="max-w-7xl mx-auto w-full px-6 py-4 text-center text-gray-400 text-sm">
+    &copy; 2025 Through Their Lens. All rights reserved.
+  </footer>
+
+</body>
+</html>
