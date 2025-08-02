@@ -6,7 +6,7 @@
   <title>Through Their Lens - Chapter 1</title>
   <link href="../dist/styles.css" rel="stylesheet">
 </head>
-<body class="min-h-screen flex flex-col bg-center bg-no-repeat relative" style="background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('../images/livingroom.jpg'); background-size: 100% 100%;">
+<body class="min-h-screen flex flex-col bg-no-repeat relative" style="background-image: url('../images/door.jpg'); background-size: auto 100%; background-position: center center;">
   
   <!-- Navigation Bar -->
   <nav class="bg-gray-900 relative z-10">
@@ -22,7 +22,7 @@
   </nav>
 
   <!-- Main Content  -->
-  <div class="flex-1 flex flex-col relative z-20">
+  <div class="flex-1 flex flex-col relative z-0">
    
     <!-- Profile Icon -->
     <div class="absolute top-4 sm:top-8 right-4 sm:right-8 z-30">
@@ -41,28 +41,20 @@
 
 
   <!-- Main Content Area -->
-  <a href="4.html" class="flex-1 cursor-pointer">
-    
-    <!-- Avatar and Dialogue Section -->
+  <a href="8.html" class="flex-1 cursor-pointer">
+
+    <!-- Dialogue Section -->
     <div class="fixed inset-x-0 bottom-0 z-50 flex flex-col h-screen pt-20 sm:pt-24 pointer-events-none">
-      <!-- Avatar Section -->
-      <div class="flex-1 flex items-end justify-center pb-0">
-        <div class="block text-center pointer-events-auto">
-          <img 
-            src="../images/avatar2.png" 
-            alt="Avatar"
-            class="h-auto object-contain select-none mx-auto"
-            style="width: clamp(150px, 20vw, 400px); filter: brightness(0.15) contrast(0.8) saturate(0.3) sepia(0.6) hue-rotate(15deg);"
-          />
-        </div>
-      </div>
+     
+      <div class="flex-1"></div>
       
       <!-- Dialogue Section -->
-      <div class="h-1/3 bg-white rounded-t-xl shadow-lg pointer-events-auto">
+      <div class="h-1/3 bg-violet-900 rounded-t-xl shadow-lg pointer-events-auto relative">
+        
         <!-- Dialogue text -->
-        <div class="px-8 sm:px-12 lg:px-16 py-8 sm:py-12 lg:py-16 text-center h-full flex items-center justify-center">
-          <p class="text-neutral-900 text-sm sm:text-lg lg:text-xl leading-relaxed">
-            **Click to keep blinking**
+        <div class="px-8 sm:px-12 lg:px-16 py-8 sm:py-12 lg:py-16 text-left h-full flex items-start justify-start">
+          <p class="text-white text-sm sm:text-lg lg:text-xl leading-relaxed">
+             **You walk towards the door and try to open the door**
           </p>
         </div>
       </div>

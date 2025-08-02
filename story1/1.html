@@ -11,26 +11,26 @@
 
   <!-- Navigation Bar -->
   <nav class="bg-gray-900 relative z-10">
-    <div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
-      <span class="text-white text-xl font-bold">Through Their Lens</span>
-      <ul class="flex space-x-8">
-        <li><a href="../home.html" class="text-neutral-100 text-base hover:text-white">Home</a></li>
-        <li><a href="#" class="text-white text-base hover:text-neutral-100">About</a></li>
-        <li><a href="#" class="text-neutral-100 text-base hover:text-white">Services</a></li>
-        <li><a href="#" class="text-neutral-100 text-base hover:text-white">Contacts</a></li>
+    <div class="max-w-7xl mx-auto flex items-center justify-between py-2 sm:py-4 px-4 sm:px-6">
+      <span class="text-white text-lg sm:text-xl font-bold">Through Their Lens</span>
+      <ul class="flex space-x-4 sm:space-x-6 lg:space-x-8">
+        <li><a href="../home.html" class="text-neutral-100 text-sm sm:text-base hover:text-white">Home</a></li>
+        <li><a href="#" class="text-white text-sm sm:text-base hover:text-neutral-100">About</a></li>
+        <li><a href="#" class="text-neutral-100 text-sm sm:text-base hover:text-white">Services</a></li>
+        <li><a href="#" class="text-neutral-100 text-sm sm:text-base hover:text-white">Contacts</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- Main Content  -->
   <div class="flex-1 flex flex-col relative z-20">
-    <h1 class="text-white text-4xl font-semibold mb-6 text-center mt-8">Chapter 1</h1>
+    <h1 class="text-white text-2xl sm:text-4xl lg:text-5xl font-semibold text-center mt-8 sm:mt-12 lg:mt-16">Chapter 1</h1>
     
     <!-- Profile Icon -->
-    <div class="absolute top-8 right-8 z-20">
+    <div class="absolute top-4 sm:top-6 lg:top-8 right-4 sm:right-6 lg:right-8 z-20">
       <a 
         href="/profile.html"
-        class="flex items-center justify-center bg-white rounded-full w-16 h-16 shadow-lg hover:bg-blue-700 transition"
+        class="flex items-center justify-center bg-white rounded-full w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 shadow-lg hover:bg-blue-700 transition"
         style="padding: 2px;"
       >
         <img 
@@ -41,20 +41,26 @@
       </a>
     </div>
    
-     <a href="2.html" class="fixed inset-x-0 top-40 bottom-0 w-full h-[calc(100vh-10rem)] z-0 block">
-        <img 
-        src="../images/avatar1.png" 
-        alt="Faded Avatar Background"
-        class="w-full h-full bg-black object-contain opacity-20 select-none object-center"
-        />
-     </a>
+    <!-- Avatar Section  -->
+    <div class="flex-1 flex flex-col items-center justify-center pt-8 sm:pt-12 lg:pt-16">
+      <div class="block text-center pointer-events-auto">
+        <a href="2.html" class="block">
+          <img 
+            src="../images/avatar1.png" 
+            alt="Avatar"
+            class="h-auto object-contain select-none mx-auto"
+            style="width: clamp(500px, 28vw, 800px);"
+          />
+        </a>
+      </div>
+      
+      <!-- Footer -->
+      <footer class="w-full px-6 py-4 text-center text-gray-400 text-sm mt-6 sm:mt-8">
+        &copy; 2025 Through Their Lens. All rights reserved.
+      </footer>
+    </div>
 
   </div>
-
-  <!-- Footer -->
-  <footer class="max-w-7xl mx-auto w-full px-6 py-4 text-center text-gray-400 text-sm">
-    &copy; 2025 Through Their Lens. All rights reserved.
-  </footer>
 
 </body>
 </html>
