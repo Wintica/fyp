@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Through Their Lens - Chapter 1</title>
-  <link href="../dist/styles.css" rel="stylesheet">
+  <link href="../../dist/styles.css" rel="stylesheet">
 </head>
-<body class="min-h-screen flex flex-col bg-no-repeat relative" style="background-image: url('../images/door.jpg'); background-size: auto 100%; background-position: center center;">
+<body class="min-h-screen flex flex-col bg-center bg-no-repeat relative" style="background-image: url('../images/livingroom.jpg'); background-size: 100% 100%;">
   
   <!-- Navigation Bar -->
   <nav class="bg-gray-900 relative z-10">
@@ -22,7 +22,7 @@
   </nav>
 
   <!-- Main Content  -->
-  <div class="flex-1 flex flex-col relative z-0">
+  <div class="flex-1 flex flex-col relative z-20">
    
     <!-- Profile Icon -->
     <div class="absolute top-4 sm:top-8 right-4 sm:right-8 z-30">
@@ -41,20 +41,36 @@
 
 
   <!-- Main Content Area -->
-  <a href="8.html" class="flex-1 cursor-pointer">
+  <a href="9.html" class="flex-1 cursor-pointer">
 
-    <!-- Dialogue Section -->
+    <!-- Avatar and Dialogue Section -->
     <div class="fixed inset-x-0 bottom-0 z-50 flex flex-col h-screen pt-20 sm:pt-24 pointer-events-none">
-     
-      <div class="flex-1"></div>
+      <!-- Avatar Section -->
+      <div class="flex-1 flex items-end justify-center pb-0">
+        <div class="block text-center pointer-events-auto">
+          <img 
+            src="../images/avatar1.png" 
+            alt="Avatar"
+            class="h-auto object-contain opacity-80 select-none mx-auto"
+            style="width: clamp(250px, 35vw, 500px);"
+          />
+        </div>
+      </div>
       
       <!-- Dialogue Section -->
-      <div class="h-1/3 bg-violet-900 rounded-t-xl shadow-lg pointer-events-auto relative">
+      <div class="h-1/3 bg-white rounded-t-xl shadow-lg pointer-events-auto relative">
+        
+        <!-- Name bubble -->
+        <div class="absolute left-12 sm:left-16 lg:left-20 top-0 transform -translate-y-1/2 z-20">
+          <div class="bg-violet-900 text-white text-sm sm:text-lg lg:text-2xl font-bold rounded-xl sm:rounded-2xl px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 lg:py-3 shadow-lg">
+            Mrs Amelia Morgan (You)
+          </div>
+        </div>
         
         <!-- Dialogue text -->
         <div class="px-8 sm:px-12 lg:px-16 py-8 sm:py-12 lg:py-16 text-left h-full flex items-start justify-start">
-          <p class="text-white text-sm sm:text-lg lg:text-xl leading-relaxed">
-             **You walk towards the door and try to open the door**
+          <p class="text-neutral-900 text-sm sm:text-lg lg:text-xl leading-relaxed">
+             Who Are You?
           </p>
         </div>
       </div>

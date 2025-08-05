@@ -38,6 +38,11 @@ Photo by: Flat Icons
 Published on: -
 Link: https://www.flaticon.com/free-icon/stories_2721307
 
+6) knob.jpg
+Photo by: Elias
+Published on: November 12, 2019
+Link: https://unsplash.com/photos/brown-knob-on-brown-surface-S6usVd4NOaw
+
 7) Learning-icon.png
 Photo by: Good Ware
 Published on: -

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Through Their Lens - Chapter 1</title>
+  <link href="../../dist/styles.css" rel="stylesheet">
+</head>
+<body class="min-h-screen flex flex-col bg-center bg-no-repeat relative" style="background-image: url('../images/livingroom.jpg'); background-size: 100% 100%;">
+  
+  <!-- Navigation Bar -->
+  <nav class="bg-gray-900 relative z-10">
+    <div class="max-w-7xl mx-auto flex items-center justify-between py-2 sm:py-4 px-4 sm:px-6">
+      <span class="text-white text-lg sm:text-xl font-bold">Through Their Lens</span>
+      <ul class="flex space-x-4 sm:space-x-6 lg:space-x-8">
+        <li><a href="../home.html" class="text-neutral-100 text-sm sm:text-base hover:text-white">Home</a></li>
+        <li><a href="#" class="text-white text-sm sm:text-base hover:text-neutral-100">About</a></li>
+        <li><a href="#" class="text-neutral-100 text-sm sm:text-base hover:text-white">Services</a></li>
+        <li><a href="#" class="text-neutral-100 text-sm sm:text-base hover:text-white">Contacts</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content  -->
+  <div class="flex-1 flex flex-col relative z-20">
+   
+    <!-- Profile Icon -->
+    <div class="absolute top-4 sm:top-8 right-4 sm:right-8 z-30">
+      <a 
+        href="../profile.html"
+        class="flex items-center justify-center bg-white rounded-full w-12 h-12 sm:w-16 sm:h-16 shadow-lg hover:bg-blue-700 transition"
+        style="padding: 2px;"
+      >
+        <img 
+          src="../images/profile.png"
+          alt="Profile Icon"
+          class="w-full h-full object-contain"
+        />
+      </a>
+    </div>
+
+
+  <!-- Main Content Area -->
+  <a href="6.html" class="flex-1 cursor-pointer">
+
+    <!-- Avatar and Dialogue Section -->
+    <div class="fixed inset-x-0 bottom-0 z-50 flex flex-col h-screen pt-20 sm:pt-24 pointer-events-none">
+      <!-- Avatar Section -->
+      <div class="flex-1 flex items-end justify-center pb-0">
+        <div class="block text-center pointer-events-auto">
+          <img 
+            src="../images/avatar2.png" 
+            alt="Avatar"
+            class="h-auto object-contain opacity-80 select-none mx-auto"
+            style="width: clamp(250px, 35vw, 500px);"
+          />
+        </div>
+      </div>
+      
+      <!-- Dialogue Section -->
+      <div class="h-1/3 bg-white rounded-t-xl shadow-lg pointer-events-auto">
+        <!-- Dialogue text -->
+        <div class="px-8 sm:px-12 lg:px-16 py-8 sm:py-12 lg:py-16 text-center h-full flex items-center justify-center">
+          <p class="text-neutral-900 text-sm sm:text-lg lg:text-xl leading-relaxed">
+            **Click to keep blinking**
+          </p>
+        </div>
+      </div>
+    </div>
+  </a>
+
+</body>
+</html>
