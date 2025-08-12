@@ -7,7 +7,7 @@ function updateSlider(value) {
     // Disable the slider to lock it at 50
     document.getElementById('doorSlider').disabled = true;
 
-    // Add success styling and message
+    // Add success message
     document.getElementById('sliderValue').className = 'mt-6 text-2xl font-bold text-green-600 relative z-50';
     document.getElementById('sliderValue').innerText = value + " Perfect!";
     

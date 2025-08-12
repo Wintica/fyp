@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Wintica/fyp#readme",
   "devDependencies": {
+    "autoprefixer": "^10.4.21",
     "postcss-cli": "^11.0.1",
     "tailwindcss": "^4.1.11"
   },

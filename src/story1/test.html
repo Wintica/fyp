@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Through Their Lens - Chapter 1</title>
+  <link href="../../dist/styles.css" rel="stylesheet">
+  <style>
+        /* Only keep essential canvas styling */
+        #gameCanvas {
+            background: linear-gradient(45deg, #f0f8ff 0%, #e6f3ff 100%);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col relative">
+  
+  <!-- Navigation Bar -->
+  <nav class="bg-gray-900 relative z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between py-2 sm:py-4 px-4 sm:px-6">
+      <span class="text-white text-lg sm:text-xl font-bold">Through Their Lens</span>
+      <ul class="flex space-x-4 sm:space-x-6 lg:space-x-8">
+        <li><a href="../home.html" class="text-neutral-100 text-sm sm:text-base hover:text-white">Home</a></li>
+        <li><a href="#" class="text-white text-sm sm:text-base hover:text-neutral-100">About</a></li>
+        <li><a href="#" class="text-neutral-100 text-sm sm:text-base hover:text-white">Services</a></li>
+        <li><a href="#" class="text-neutral-100 text-sm sm:text-base hover:text-white">Contacts</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content  -->
+  <div class="flex-1 flex flex-col relative z-40">
+   
+    <!-- Profile Icon -->
+    <div class="absolute top-4 sm:top-8 right-4 sm:right-8 z-50">
+      <a 
+        href="../profile.html"
+        class="flex items-center justify-center bg-white rounded-full w-12 h-12 sm:w-16 sm:h-16 shadow-lg hover:bg-blue-700 transition"
+        style="padding: 2px;"
+      >
+        <img 
+          src="../images/profile.png"
+          alt="Profile Icon"
+          class="w-full h-full object-contain"
+        />
+      </a>
+    </div>
+
+
+    <!-- Journey Map -->
+    <div class="flex-1 flex flex-col items-center justify-center p-4 lg:p-8">
+        <!-- Title -->
+        <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-6 md:mb-8 text-gray-800">Journey Map</h1>
+        
+        <!-- Canvas Container -->
+        <div class="w-full max-w-6xl mb-6 md:mb-8">
+            <div class="relative w-full bg-gray-100 rounded-xl overflow-hidden" style="min-height: 500px; height: 70vh;">
+                <canvas 
+                    id="gameCanvas" 
+                    class="absolute inset-0 w-full h-full border-4 border-gray-800 rounded-xl shadow-lg"
+                    width="800" 
+                    height="600">
+                </canvas>
+            </div>
+        </div>
+        
+        <!-- Controls -->
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-6 mb-6">
+            <button 
+                class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 uppercase tracking-wider text-sm sm:text-base disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-lg" 
+                id="nextBtn">
+                Next
+            </button>
+        </div>
+        
+        <!-- Game Info -->
+        <div class="text-center max-w-2xl">
+            <p class="text-gray-600 text-sm sm:text-base lg:text-lg">
+                Navigate through your journey by clicking on the checkpoints and exercises!
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Canvas setup
+        let canvasScale = 1;
+        
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            const rect = container.getBoundingClientRect();
+            // Set the actual canvas resolution to match the display size
+            const dpr = window.devicePixelRatio || 1;
+            // Set the display size
+            canvas.style.width = rect.width + 'px';
+            canvas.style.height = rect.height + 'px';
+            // Set the actual canvas size in memory 
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            // Scale the drawing context so everything draws at the correct size
+            ctx.setTransform(1, 0, 0, 1, 0, 0); 
+            ctx.scale(dpr, dpr);
+            // Calculate scale factor for our coordinate system (800x600 -> actual size)
+            canvasScale = Math.min(rect.width / 800, rect.height / 600);
+            // Mobile device: allow smaller scale for better fit
+            if (isMobileDevice()) {
+                canvasScale = Math.max(canvasScale, 0.6); 
+            }
+        }
+        
+        // Helper function to detect mobile
+        function isMobileDevice() {
+            return window.innerWidth < 768;
+        }
+        
+        // Coordinate conversion functions
+        function scaleCoord(coord) {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            const width = rect.width;
+            const height = rect.height;
+            let x = coord.isPercent ? coord.x * width : coord.x * canvasScale;
+            let y = coord.isPercent ? coord.y * height : coord.y * canvasScale;
+            let offsetX = isMobileDevice()
+                ? Math.max(width - 800 * canvasScale, 0)
+                : Math.max((width - 800 * canvasScale) / 2, 0);
+            x += offsetX;
+            return { x, y };
+        }
+        
+        // Handle window resize
+        let gameLoopId;
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            // Redraw after resize
+            if (gameLoopId) {
+                drawEverything();
+            }
+        });
+        
+        // Initial canvas setup - call after a brief delay to ensure DOM is ready
+        setTimeout(() => {
+            resizeCanvas();
+        }, 100);
+        
+        // Load images from image directory
+        const checkpointImg = new Image();
+        const flagImg = new Image();
+        checkpointImg.src = '../images/checkpoint.png';
+        flagImg.src = '../images/flag.png';
+        
+        // Track if images are loaded
+        let imagesLoaded = 0;
+        const totalImages = 2;
+        function onImageLoad() {
+            imagesLoaded++;
+            if (imagesLoaded === totalImages) {
+                // Start the game when all images are loaded
+                updateNextButton(); 
+                gameLoop();
+            }
+        }
+        checkpointImg.onload = onImageLoad;
+        flagImg.onload = onImageLoad;
+        
+        // Drawing helper function
+        function drawEverything() {
+            // Clear the entire canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw all elements
+            drawPath();
+            drawCheckpoints();
+            drawExercises();
+            drawPlayer();
+        }
+        
+        // Get responsive path points for layout
+        function getResponsivePathPoints() {
+            if (isMobileDevice()) {
+                // Vertical line for mobile
+                return [
+                    {x: 0.5, y: 0.1, isPercent: true}, // Checkpoint 1 (top)
+                    {x: 0.5, y: 0.3, isPercent: true}, // Exercise 1
+                    {x: 0.5, y: 0.5, isPercent: true}, // Checkpoint 2
+                    {x: 0.5, y: 0.7, isPercent: true}, // Exercise 2
+                    {x: 0.5, y: 0.9, isPercent: true}  // Checkpoint 3 (bottom)
+                ];
+            } else {
+                // Original path for desktop/tablet
+                return [
+                    {x: 200, y: 500},
+                    {x: 280, y: 480},
+                    {x: 360, y: 450},
+                    {x: 420, y: 420},
+                    {x: 450, y: 400},
+                    {x: 480, y: 380},
+                    {x: 540, y: 340},
+                    {x: 600, y: 300},
+                    {x: 580, y: 260},
+                    {x: 540, y: 220},
+                    {x: 500, y: 200},
+                    {x: 460, y: 180},
+                    {x: 430, y: 150},
+                    {x: 400, y: 100}
+                ];
+            }
+        }
+
+
+        // Persistent state for completion
+        let persistentCheckpoints = [];
+        let persistentExercises = [];
+
+        function getResponsiveCheckpoints() {
+            if (isMobileDevice()) {
+                return [
+                    {pos: {x: 0.5, y: 0.1, isPercent: true}, name: "Checkpoint 1"},
+                    {pos: {x: 0.5, y: 0.5, isPercent: true}, name: "Checkpoint 2"},
+                    {pos: {x: 0.5, y: 0.9, isPercent: true}, name: "Checkpoint 3"}
+                ];
+            } else {
+                return [
+                    {pos: {x: 200, y: 500}, name: "Checkpoint 1"},
+                    {pos: {x: 600, y: 300}, name: "Checkpoint 2"},
+                    {pos: {x: 400, y: 100}, name: "Checkpoint 3"}
+                ];
+            }
+        }
+
+        function getResponsiveExercises() {
+            if (isMobileDevice()) {
+                return [
+                    {pos: {x: 0.5, y: 0.3, isPercent: true}, name: "Exercise 1"},
+                    {pos: {x: 0.5, y: 0.7, isPercent: true}, name: "Exercise 2"}
+                ];
+            } else {
+                return [
+                    {pos: {x: 450, y: 400}, name: "Exercise 1"},
+                    {pos: {x: 500, y: 200}, name: "Exercise 2"}
+                ];
+            }
+        }
+
+        function updatePersistentState() {
+            // Rebuild persistent arrays on resize/device change, preserving completion
+            const oldCheckpoints = persistentCheckpoints;
+            const oldExercises = persistentExercises;
+            const newCheckpoints = getResponsiveCheckpoints();
+            const newExercises = getResponsiveExercises();
+            persistentCheckpoints = newCheckpoints.map((cp, i) => ({
+                ...cp,
+                completed: oldCheckpoints[i] ? oldCheckpoints[i].completed : false
+            }));
+            persistentExercises = newExercises.map((ex, i) => ({
+                ...ex,
+                completed: oldExercises[i] ? oldExercises[i].completed : false
+            }));
+        }
+
+        // Initial persistent state
+        updatePersistentState();
+
+        // Replace static pathPoints, checkpoints, and exercises with responsive versions
+        let pathPoints = getResponsivePathPoints();
+
+        const gameState = {
+            get checkpoints() { return persistentCheckpoints; },
+            get exercises() { return persistentExercises; },
+            player: {
+                pos: isMobileDevice() ? {x: 0.5, y: 0.1, isPercent: true} : {x: 200, y: 500},
+                currentStep: 0,
+                size: 12
+            },
+            isAnimating: false,
+            sequence: [
+                {type: 'checkpoint', index: 0, name: 'Checkpoint 1'},
+                {type: 'exercise', index: 0, name: 'Exercise 1'}
+            ]
+        };
+        
+        // On resize, update pathPoints and player position if needed
+
+        window.addEventListener('resize', () => {
+            pathPoints = getResponsivePathPoints();
+            updatePersistentState();
+            if (isMobileDevice()) {
+                gameState.player.pos = {x: 0.5, y: 0.1, isPercent: true};
+            } else {
+                gameState.player.pos = {x: 200, y: 500};
+            }
+            resizeCanvas();
+            if (gameLoopId) {
+                drawEverything();
+            }
+        });
+        
+    
+        
+        // Drawing helper function
+        function drawEverything() {
+            // Clear the entire canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw all elements
+            drawPath();
+            drawCheckpoints();
+            drawExercises();
+            drawPlayer();
+        }
+        
+        // Canvas click handling with responsive coordinates
+        canvas.addEventListener('click', (event) => {
+            if (gameState.isAnimating) return;
+            
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            
+            // Get click position in canvas coordinates
+            const clickX = (event.clientX - rect.left) * scaleX / canvasScale;
+            const clickY = (event.clientY - rect.top) * scaleY / canvasScale;
+            
+            // Check if clicked on any checkpoint or exercise
+            [...gameState.checkpoints, ...gameState.exercises].forEach((item) => {
+                const distance = Math.sqrt((clickX - item.pos.x) * (clickX - item.pos.x) + (clickY - item.pos.y) * (clickY - item.pos.y));
+                const clickTolerance = isMobileDevice() ? 60 : 40; // Bigger click area on mobile
+                if (distance < clickTolerance) {
+                    // Move to this item if it's accessible
+                    gameState.player.pos = {...item.pos};
+                    drawEverything();
+                    updateNextButton();
+                }
+            });
+        });
+        
+
+        function drawPath() {
+            // Draw main path with gradient
+            const gradient = ctx.createLinearGradient(0, 0, 800 * canvasScale, 600 * canvasScale);
+            gradient.addColorStop(0, '#4facfe');
+            gradient.addColorStop(1, '#00f2fe');
+            
+            ctx.strokeStyle = gradient;
+            // Make path thicker on mobile
+            const baseLineWidth = isMobileDevice() ? 10 : 6; // Thicker on mobile
+            ctx.lineWidth = baseLineWidth * canvasScale;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            
+            // Draw path with smooth curves using scaled coordinates
+            ctx.beginPath();
+            const scaledStartPoint = scaleCoord(pathPoints[0]);
+            ctx.moveTo(scaledStartPoint.x, scaledStartPoint.y);
+            
+            for (let i = 1; i < pathPoints.length - 2; i++) {
+                const scaledCurrent = scaleCoord(pathPoints[i]);
+                const scaledNext = scaleCoord(pathPoints[i + 1]);
+                const xc = (scaledCurrent.x + scaledNext.x) / 2;
+                const yc = (scaledCurrent.y + scaledNext.y) / 2;
+                ctx.quadraticCurveTo(scaledCurrent.x, scaledCurrent.y, xc, yc);
+            }
+            
+            const scaledSecondLast = scaleCoord(pathPoints[pathPoints.length - 2]);
+            const scaledLast = scaleCoord(pathPoints[pathPoints.length - 1]);
+            ctx.quadraticCurveTo(
+                scaledSecondLast.x,
+                scaledSecondLast.y,
+                scaledLast.x,
+                scaledLast.y
+            );
+            ctx.stroke();
+
+            // Draw path direction indicators
+            pathPoints.forEach((point, index) => {
+                if (index % 2 === 0) { // Show every other point
+                    const scaledPoint = scaleCoord(point);
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                    ctx.beginPath();
+                    ctx.arc(scaledPoint.x, scaledPoint.y, 3 * canvasScale, 0, 2 * Math.PI);
+                    ctx.fill();
+                    
+                    ctx.strokeStyle = '#333';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+            });
+        }
+
+        function drawCheckpoints() {
+            gameState.checkpoints.forEach((checkpoint, index) => {
+                const scaledPos = scaleCoord(checkpoint.pos);
+                const {x, y} = scaledPos;
+                
+                // Check if this checkpoint is the current step
+                const currentStepInfo = gameState.player.currentStep < gameState.sequence.length ? 
+                    gameState.sequence[gameState.player.currentStep] : null;
+                const isCurrentCheckpoint = currentStepInfo && 
+                    currentStepInfo.type === 'checkpoint' && 
+                    currentStepInfo.index === index;
+                
+                // Determine which image to use
+                let imgToUse;
+                if (index === 2) { // Last checkpoint (Checkpoint 3) uses flag
+                    imgToUse = flagImg;
+                } else { // First two checkpoints use checkpoint image
+                    imgToUse = checkpointImg;
+                }
+                
+                // Draw the image with scaled size (same on all devices)
+                const baseImgSize = 56;
+                const imgSize = baseImgSize * canvasScale;
+                ctx.drawImage(imgToUse, x - imgSize/2, y - imgSize/2, imgSize, imgSize);
+                
+                // Add glow effect for current checkpoint
+                if (isCurrentCheckpoint) {
+                    ctx.strokeStyle = '#FFE082';
+                    ctx.lineWidth = 3 * canvasScale;
+                    ctx.beginPath();
+                    ctx.arc(x, y, imgSize/2 + 7 * canvasScale, 0, 2 * Math.PI);
+                    ctx.stroke();
+                }
+                
+                // Add completion indicator
+                // Check if player is standing on this checkpoint
+                const scaledPlayerPos = scaleCoord(gameState.player.pos);
+                const playerX = scaledPlayerPos.x;
+                const playerY = scaledPlayerPos.y;
+                const distanceToCheckpoint = Math.sqrt((playerX - x) * (playerX - x) + (playerY - y) * (playerY - y));
+                
+                // Show "you are here" if player is standing on this checkpoint (scaled distance)
+                if (distanceToCheckpoint < 15 * canvasScale && !gameState.isAnimating) {
+                    // Draw "you are here" text below the checkpoint (fixed size)
+                    const baseFontSize = 14;
+                    ctx.fillStyle = '#FF9800';
+                    ctx.font = `bold ${baseFontSize * canvasScale}px Arial`;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    
+                    // Add background for text
+                    const textWidth = ctx.measureText("you are here").width;
+                    const textHeight = 16 * canvasScale;
+                    const textX = x;
+                    const textY = y + imgSize/2 + 40 * canvasScale;
+                    
+                    // Draw background rectangle
+                    ctx.fillStyle = 'rgba(255, 152, 0, 0.9)';
+                    ctx.beginPath();
+                    ctx.roundRect(textX - textWidth/2 - 8 * canvasScale, textY - textHeight/2, textWidth + 16 * canvasScale, textHeight, 8 * canvasScale);
+                    ctx.fill();
+                    
+                    // Draw white border
+                    ctx.strokeStyle = '#fff';
+                    ctx.lineWidth = 2 * canvasScale;
+                    ctx.stroke();
+                    
+                    // Draw text
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText("you are here", textX, textY);
+                }
+                
+                // Add completion indicator (only show checkmarks if not showing "you are here")
+                if (checkpoint.completed && !(distanceToCheckpoint < 15 * canvasScale && !gameState.isAnimating)) {
+                    // Draw green checkmark overlay only if player is not currently on this checkpoint
+                    ctx.save();
+                    ctx.fillStyle = 'rgba(76, 175, 80, 0.8)';
+                    ctx.beginPath();
+                    ctx.arc(x + imgSize/3, y - imgSize/3, 12 * canvasScale, 0, 2 * Math.PI);
+                    ctx.fill();
+                    // Draw white checkmark
+                    ctx.strokeStyle = '#fff';
+                    ctx.lineWidth = 2 * canvasScale;
+                    ctx.beginPath();
+                    ctx.moveTo(x + imgSize/3 - 5 * canvasScale, y - imgSize/3 + 1 * canvasScale);
+                    ctx.lineTo(x + imgSize/3 - 1 * canvasScale, y - imgSize/3 + 6 * canvasScale);
+                    ctx.lineTo(x + imgSize/3 + 7 * canvasScale, y - imgSize/3 - 4 * canvasScale);
+                    ctx.stroke();
+                    ctx.restore();
+                }
+                
+                // Draw checkpoint name with same font size on all devices
+                const baseNameFontSize = 14;
+                ctx.fillStyle = '#333';
+                ctx.font = `bold ${baseNameFontSize * canvasScale}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'top';
+                // Calculate text position
+                let nameX = x;
+                let nameY = y + imgSize/2 + 6 * canvasScale;
+                // Ensure text stays within canvas horizontally
+                const textWidth = ctx.measureText(checkpoint.name).width;
+                if (nameX - textWidth/2 < 0) nameX = textWidth/2;
+                if (nameX + textWidth/2 > canvas.width) nameX = canvas.width - textWidth/2;
+                // Ensure text stays within canvas vertically
+                if (nameY + baseNameFontSize * canvasScale > canvas.height) nameY = canvas.height - baseNameFontSize * canvasScale;
+                ctx.fillText(checkpoint.name, nameX, nameY);
+            });
+        }
+
+        function drawExercises() {
+            gameState.exercises.forEach((exercise, index) => {
+                const scaledPos = scaleCoord(exercise.pos);
+                const {x, y} = scaledPos;
+                
+                // Check if this exercise is the current step
+                const currentStepInfo = gameState.player.currentStep < gameState.sequence.length ? 
+                    gameState.sequence[gameState.player.currentStep] : null;
+                const isCurrentExercise = currentStepInfo && 
+                    currentStepInfo.type === 'exercise' && 
+                    currentStepInfo.index === index;
+                
+                // Create gradient for exercise with scaled radius
+                const gradient = ctx.createRadialGradient(x, y, 0, x, y, 35 * canvasScale);
+                
+                if (isCurrentExercise) {
+                    gradient.addColorStop(0, '#FF9800');
+                    gradient.addColorStop(1, '#F57C00');
+                } else {
+                    gradient.addColorStop(0, '#2196F3');
+                    gradient.addColorStop(1, '#1976D2');
+                }
+                
+                // Draw exercise rectangle with rounded corners and scaled dimensions (fixed size)
+                const baseWidth = 80;
+                const baseHeight = 50;
+                const width = baseWidth * canvasScale;
+                const height = baseHeight * canvasScale;
+                const cornerRadius = 12 * canvasScale;
+                
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.roundRect(x - width/2, y - height/2, width, height, cornerRadius);
+                ctx.fill();
+                
+                // Add border
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 3 * canvasScale;
+                ctx.stroke();
+                
+                // Add glow effect for current exercise
+                if (isCurrentExercise) {
+                    ctx.strokeStyle = '#FFE082';
+                    ctx.lineWidth = 2 * canvasScale;
+                    ctx.beginPath();
+                    ctx.roundRect(x - width/2 - 5 * canvasScale, y - height/2 - 5 * canvasScale, width + 10 * canvasScale, height + 10 * canvasScale, cornerRadius + 2 * canvasScale);
+                    ctx.stroke();
+                }
+                
+                // Draw exercise text with same font size on all devices
+                ctx.fillStyle = '#fff';
+                const baseExerciseFontSize = 12;
+                ctx.font = `bold ${baseExerciseFontSize * canvasScale}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(`Exercise ${index + 1}`, x, y);
+                
+                // Add "you are here" indicator for current exercise
+                // Show "you are here" if player is standing on this exercise
+                const scaledPlayerPos = scaleCoord(gameState.player.pos);
+                const playerX = scaledPlayerPos.x;
+                const playerY = scaledPlayerPos.y;
+                const distanceToExercise = Math.sqrt((playerX - x) * (playerX - x) + (playerY - y) * (playerY - y));
+                
+                // Show text if player is close enough to the exercise (standing on it)
+                if (distanceToExercise < 15 * canvasScale && !gameState.isAnimating) {
+                    // Draw "you are here" text below the exercise (fixed size)
+                    const baseExerciseTextFontSize = 14;
+                    ctx.fillStyle = '#FF9800';
+                    ctx.font = `bold ${baseExerciseTextFontSize * canvasScale}px Arial`;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    
+                    // Add background for text
+                    const textWidth = ctx.measureText("you are here").width;
+                    const textHeight = 16 * canvasScale;
+                    const textX = x;
+                    const textY = y + height/2 + 20 * canvasScale;
+                    
+                    // Draw background rectangle
+                    ctx.fillStyle = 'rgba(255, 152, 0, 0.9)';
+                    ctx.beginPath();
+                    ctx.roundRect(textX - textWidth/2 - 8 * canvasScale, textY - textHeight/2, textWidth + 16 * canvasScale, textHeight, 8 * canvasScale);
+                    ctx.fill();
+                    
+                    // Draw white border
+                    ctx.strokeStyle = '#fff';
+                    ctx.lineWidth = 2 * canvasScale;
+                    ctx.stroke();
+                    
+                    // Draw text
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText("you are here", textX, textY);
+                }
+                
+                // Add completion indicator for exercises (only show checkmarks if not showing "you are here")
+                if (exercise.completed && !(distanceToExercise < 15 * canvasScale && !gameState.isAnimating)) {
+                    // Draw green checkmark overlay only if player is not currently on this exercise
+                    ctx.fillStyle = 'rgba(76, 175, 80, 0.8)';
+                    ctx.beginPath();
+                    ctx.arc(x + width/3, y - height/3, 12 * canvasScale, 0, 2 * Math.PI);
+                    ctx.fill();
+                    
+                    ctx.strokeStyle = '#fff';
+                    ctx.lineWidth = 2 * canvasScale;
+                    ctx.beginPath();
+                    ctx.moveTo(x + width/3 - 6 * canvasScale, y - height/3);
+                    ctx.lineTo(x + width/3 - 2 * canvasScale, y - height/3 + 4 * canvasScale);
+                    ctx.lineTo(x + width/3 + 6 * canvasScale, y - height/3 - 4 * canvasScale);
+                    ctx.stroke();
+                }
+            });
+        }
+
+        function drawPlayer() {
+            const scaledPos = scaleCoord(gameState.player.pos);
+            const x = scaledPos.x;
+            const y = scaledPos.y;
+            
+            // Player size (fixed for all devices)
+            const baseSize = 12;
+            const size = baseSize * canvasScale;
+            
+            // Create trail effect if moving
+            if (gameState.isAnimating) {
+                ctx.fillStyle = 'rgba(255, 107, 107, 0.1)';
+                for (let i = 1; i <= 3; i++) {
+                    ctx.beginPath();
+                    ctx.arc(x, y, size + i * 3 * canvasScale, 0, 2 * Math.PI);
+                    ctx.fill();
+                }
+            }
+            
+            // Create player gradient with scaled radius
+            const gradient = ctx.createRadialGradient(x, y, 0, x, y, size);
+            gradient.addColorStop(0, '#FF6B6B');
+            gradient.addColorStop(0.7, '#FF5252');
+            gradient.addColorStop(1, '#D32F2F');
+            
+            // Draw player with glow effect
+            ctx.fillStyle = 'rgba(255, 107, 107, 0.3)';
+            ctx.beginPath();
+            ctx.arc(x, y, size + 4 * canvasScale, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Draw main player circle
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Add highlight
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.beginPath();
+            ctx.arc(x - 3 * canvasScale, y - 3 * canvasScale, size * 0.4, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Add border
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, 2 * Math.PI);
+            ctx.stroke();
+            
+            // Add pulsing effect when moving
+            if (gameState.isAnimating) {
+                const pulse = Math.sin(Date.now() * 0.01) * 0.3 + 0.7;
+                ctx.strokeStyle = `rgba(255, 255, 255, ${pulse})`;
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.arc(x, y, size + 6, 0, 2 * Math.PI);
+                ctx.stroke();
+            }
+        }
+
+
+        function animateToNextStep() {
+            if (gameState.player.currentStep >= gameState.sequence.length) {
+                return;
+            }
+            const currentStepInfo = gameState.sequence[gameState.player.currentStep];
+            let target;
+            // Get the target destination
+            if (currentStepInfo.type === 'checkpoint') {
+                target = gameState.checkpoints[currentStepInfo.index].pos;
+            } else {
+                target = gameState.exercises[currentStepInfo.index].pos;
+            }
+            const player = gameState.player.pos;
+            // Always animate in pixel space for consistency
+            const container = canvas.parentElement;
+            const rect = container.getBoundingClientRect();
+            // Convert both player and target to pixel coordinates
+            function toPixel(coord) {
+                if (coord.isPercent) {
+                    return {
+                        x: coord.x * rect.width,
+                        y: coord.y * rect.height
+                    };
+                } else {
+                    return {
+                        x: coord.x * canvasScale + ((rect.width - 800 * canvasScale) / 2 > 0 ? (rect.width - 800 * canvasScale) / 2 : 0),
+                        y: coord.y * canvasScale
+                    };
+                }
+            }
+            const playerPx = toPixel(player);
+            const targetPx = toPixel(target);
+            const dx = targetPx.x - playerPx.x;
+            const dy = targetPx.y - playerPx.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < 10) {
+                // Snap to target
+                gameState.player.pos = {...target};
+                gameState.isAnimating = false;
+                // Set completed on persistent state
+                if (currentStepInfo.type === 'checkpoint') {
+                    persistentCheckpoints[currentStepInfo.index].completed = true;
+                } else {
+                    persistentExercises[currentStepInfo.index].completed = true;
+                }
+                gameState.player.currentStep++;
+                updateNextButton();
+                return;
+            }
+            // Move towards target in pixel space, then convert back to percent or absolute
+            const speed = 6;
+            const moveX = (dx / distance) * speed;
+            const moveY = (dy / distance) * speed;
+            const newPx = { x: playerPx.x + moveX, y: playerPx.y + moveY };
+            // Update player position in the correct coordinate system
+            if (player.isPercent) {
+                gameState.player.pos.x = newPx.x / rect.width;
+                gameState.player.pos.y = newPx.y / rect.height;
+            } else {
+                // For desktop, keep as absolute
+                gameState.player.pos.x += moveX / canvasScale;
+                gameState.player.pos.y += moveY / canvasScale;
+            }
+        }
+
+        function nextStep() {
+            if (gameState.isAnimating || gameState.player.currentStep >= gameState.sequence.length) {
+                return;
+            }
+            
+            // Start animation to next step
+            gameState.isAnimating = true;
+            updateNextButton();
+        }
+
+        function updateNextButton() {
+            const nextBtn = document.getElementById('nextBtn');
+            if (gameState.player.currentStep >= gameState.sequence.length) {
+                nextBtn.textContent = 'Continue';
+                nextBtn.disabled = false;
+                nextBtn.onclick = function() {
+                    window.location.href = '24.html';
+                };
+            } else if (gameState.isAnimating) {
+                nextBtn.textContent = 'Moving...';
+                nextBtn.disabled = true;
+            } else {
+                const nextStepInfo = gameState.sequence[gameState.player.currentStep];
+                
+                // Check if player is already at the current step location
+                let target;
+                if (nextStepInfo.type === 'checkpoint') {
+                    target = gameState.checkpoints[nextStepInfo.index].pos;
+                } else {
+                    target = gameState.exercises[nextStepInfo.index].pos;
+                }
+                
+                const playerX = gameState.player.pos.x;
+                const playerY = gameState.player.pos.y;
+                const distanceToTarget = Math.sqrt((playerX - target.x) * (playerX - target.x) + (playerY - target.y) * (playerY - target.y));
+                
+                // If player is already at the location (within 15 pixels), show "Next"
+                if (distanceToTarget < 15) {
+                    nextBtn.textContent = 'Next';
+                } else {
+                    nextBtn.textContent = `Go to ${nextStepInfo.name}`;
+                }
+                
+                nextBtn.disabled = false;
+                nextBtn.onclick = function() {
+                    nextStep();
+                };
+            }
+        }
+
+        function gameLoop() {
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Handle animation
+            if (gameState.isAnimating) {
+                animateToNextStep();
+            }
+            
+            // Draw everything
+            drawEverything();
+            
+            gameLoopId = requestAnimationFrame(gameLoop);
+        }
+
+        // Canvas rounded rectangle function (for older browsers)
+
+        // Initialize game only after images are loaded
+        // The actual initialization happens in onImageLoad function
+    </script>
+
+  </div>
+
+</body>
+</html>

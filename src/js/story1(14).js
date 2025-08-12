@@ -1,6 +1,6 @@
 let holdTimer = null;
 let progressTimer = null;
-let holdDuration = 3000; // 3 seconds to complete the hold
+let holdDuration = 3000; 
 let startTime = 0;
 
 function startHold() {

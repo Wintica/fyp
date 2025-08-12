@@ -18,10 +18,20 @@ Photo by: Freepik
 Published on: -
 Link: https://www.flaticon.com/free-icon/old-woman_4038865?term=avatar+old&page=1&position=58&origin=search&related_id=4038865
 
+3) checkpoint.png
+Photo by: ekays.dsgn
+Published on: -
+Link: https://www.flaticon.com/free-icon/checkpoint_12719863?term=checkpoints&page=1&position=1&origin=search&related_id=12719863
+
 4) door.jpg
 Photo by: December 13, 2018
 Published on: December 13, 2018
 Link: https://unsplash.com/photos/closed-door-7uPzmidQ4jI
+
+4) flag.png
+Photo by: juicy_fish
+Published on: -
+Link: https://www.flaticon.com/free-icon/flag_15141644?term=finishing+flag&page=6&position=69&origin=search&related_id=15141644
 
 4) flower.jpg
 Photo by: Annie Spratt
