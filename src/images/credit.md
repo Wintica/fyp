@@ -8,6 +8,11 @@ Photo by: Mathias Reding
 Published on: November 25, 2019
 Link: https://unsplash.com/photos/person-wearing-coat-painting-man-during-daytime-BtsZaH9pJp8
 
+1) angry.png
+Photo by: riajulislam
+Published on:
+Link: https://www.flaticon.com/free-icon/angry_9893391?term=angry&related_id=9893391
+
 2) avatar1.png
 Photo by: Freepik
 Published on: -
@@ -38,6 +43,16 @@ Photo by: Annie Spratt
 Published on: November 19, 2015
 Link: https://unsplash.com/photos/selective-photography-of-purple-petaled-flowers-vs6a4EHj_Ro
 
+0) frustrated.png
+Photo by: 
+Published on: 
+Link: https://www.flaticon.com/free-icon/face_14862469?term=emoji+disappointed&page=1&position=16&origin=search&related_id=14862469
+
+0) hurt.png
+Photo by: Vectors Market
+Published on: 
+Link: https://www.flaticon.com/free-icon/sad_742752?term=emoji+sad&page=1&position=1&origin=search&related_id=742752
+
 5) instagram-logo.png
 Photo by: Pixel perfect
 Published on: -
@@ -62,6 +77,11 @@ Link: https://www.flaticon.com/free-icon/book_864685?term=book&page=1&position=1
 Photo by: Minh Pham
 Published on: March 10, 2020
 Link: https://unsplash.com/photos/a-living-room-filled-with-furniture-and-a-large-window-OtXADkUh3-I
+
+0) lonely.png
+Photo by: Prashanth Rapolu 15
+Published on: 
+Link: https://www.flaticon.com/free-icon/sad_10533948?term=emoji+sad&related_id=10533948
 
 9) profile.png
 Photo by: Freepik

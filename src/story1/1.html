@@ -13,13 +13,19 @@
   <nav class="bg-gray-900 relative z-10">
     <div class="max-w-7xl mx-auto flex items-center justify-between py-2 sm:py-4 px-4 sm:px-6">
       <span class="text-white text-lg sm:text-xl font-bold">Through Their Lens</span>
-      <ul class="flex space-x-4 sm:space-x-6 lg:space-x-8">
-        <li><a href="../home.html" class="text-neutral-100 text-sm sm:text-base hover:text-white">Home</a></li>
-        <li><a href="#" class="text-white text-sm sm:text-base hover:text-neutral-100">About</a></li>
-        <li><a href="#" class="text-neutral-100 text-sm sm:text-base hover:text-white">Services</a></li>
-        <li><a href="#" class="text-neutral-100 text-sm sm:text-base hover:text-white">Contacts</a></li>
+      <!-- Hamburger Button  -->
+      <button id="menu-toggle" class="sm:hidden text-white focus:outline-none ml-2" aria-label="Open menu">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <!-- Navigation Links -->
+      <ul id="nav-menu" class="hidden sm:flex space-x-4 sm:space-x-6 lg:space-x-8 bg-gray-900 sm:bg-transparent absolute sm:static top-full left-0 w-full sm:w-auto z-20 sm:z-auto">
+        <li><a href="../home.html" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-white">Home</a></li>
+        <li><a href="#" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-white">About</a></li>
+        <li><a href="#" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-white">Services</a></li>
+        <li><a href="#" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-white">Contacts</a></li>
       </ul>
     </div>
+  <script src="../js/navigation.js"></script>
   </nav>
 
   <!-- Main Content  -->
@@ -27,14 +33,14 @@
     <h1 class="text-white text-2xl sm:text-4xl lg:text-5xl font-semibold text-center mt-8 sm:mt-12 lg:mt-16">Chapter 1</h1>
     
     <!-- Profile Icon -->
-    <div class="absolute top-4 sm:top-6 lg:top-8 right-4 sm:right-6 lg:right-8 z-20">
+    <div class="absolute top-4 sm:top-8 right-4 sm:right-8 z-30">
       <a 
-        href="/profile.html"
-        class="flex items-center justify-center bg-white rounded-full w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 shadow-lg hover:bg-blue-700 transition"
+        href="../profile.html"
+        class="flex items-center justify-center bg-white rounded-full w-12 h-12 sm:w-16 sm:h-16 shadow-lg hover:bg-blue-700 transition"
         style="padding: 2px;"
       >
         <img 
-          src="/images/profile.png"
+          src="../images/profile.png"
           alt="Profile Icon"
           class="w-full h-full object-contain"
         />
