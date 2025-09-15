@@ -3,10 +3,15 @@ Photo by:
 Published on: 
 Link: 
 
-1) afternoonHobbies.jpg 
-Photo by: Mathias Reding
-Published on: November 25, 2019
-Link: https://unsplash.com/photos/person-wearing-coat-painting-man-during-daytime-BtsZaH9pJp8
+0) achievement1.png
+Photo by: Freepik
+Published on: - 
+Link: https://www.flaticon.com/free-icon/emotional_6174555?term=feelings&related_id=6174555
+
+0) achievement2.png
+Photo by: Uniconlabs
+Published on: -
+Link: https://www.flaticon.com/free-icon/comprehend_12841735?term=understanding&page=1&position=94&origin=search&related_id=12841735
 
 1) angry.png
 Photo by: riajulislam
@@ -23,15 +28,40 @@ Photo by: Freepik
 Published on: -
 Link: https://www.flaticon.com/free-icon/old-woman_4038865?term=avatar+old&page=1&position=58&origin=search&related_id=4038865
 
+0) chat.png
+Photo by: heisenberg_jr
+Published on: 
+Link: https://www.flaticon.com/free-icon/comment_13404376?term=communication&related_id=13404376
+
 3) checkpoint.png
 Photo by: ekays.dsgn
 Published on: -
 Link: https://www.flaticon.com/free-icon/checkpoint_12719863?term=checkpoints&page=1&position=1&origin=search&related_id=12719863
 
+0) confounded.png
+Photo by: Freepik 
+Published on: -
+Link: https://www.flaticon.com/free-icon/confounded_4875904?term=confounded+face&page=1&position=39&origin=search&related_id=4875904
+
+0) correct.png
+Photo by: kliwir art
+Published on: - 
+Link: https://www.flaticon.com/free-icon/correct_4436481?term=tick&page=1&position=28&origin=tag&related_id=4436481
+
+0) closet.jpg
+Photo by: Kamil Kalkan
+Published on: September 12, 2022
+Link: https://unsplash.com/photos/a-closet-full-of-clothes-Rug_4KezQgU
+
 4) door.jpg
 Photo by: December 13, 2018
 Published on: December 13, 2018
 Link: https://unsplash.com/photos/closed-door-7uPzmidQ4jI
+
+0) family-pics.jpg
+Photo by: Debby Hudson
+Published on: July 28, 2024
+Link: https://unsplash.com/photos/a-group-of-photos-sitting-on-top-of-a-white-sheet-hah1pStI7L0
 
 4) flag.png
 Photo by: juicy_fish
@@ -44,9 +74,14 @@ Published on: November 19, 2015
 Link: https://unsplash.com/photos/selective-photography-of-purple-petaled-flowers-vs6a4EHj_Ro
 
 0) frustrated.png
-Photo by: 
-Published on: 
+Photo by: justicon
+Published on: -
 Link: https://www.flaticon.com/free-icon/face_14862469?term=emoji+disappointed&page=1&position=16&origin=search&related_id=14862469
+
+0) happy.png
+Photo by: NajmunNahar
+Published on: -
+Link: https://www.flaticon.com/free-icon/happy-face_10851235?term=happy&related_id=10851235
 
 0) hurt.png
 Photo by: Vectors Market
@@ -93,7 +128,17 @@ Photo by: Vectors Market
 Published on: -
 Link: https://www.flaticon.com/free-icon/hierarchical-structure_757460
 
+0) sticky-notes
+Photo by: dianne clifford
+Published on: May 24, 2022
+Link: https://unsplash.com/photos/a-refrigerator-door-with-a-magnet-and-a-note-attached-to-it-jE7qUnuu-Hc
+
 11) twitter-logo.png
 Photo by: khulqi Rosyid
 Published on: -
 Link: https://www.flaticon.com/free-icon/logos_14417709?term=twitter&page=1&position=11&origin=search&related_id=14417709
+
+0) wrong.png
+Photo by: Pixel perfect
+Published on: -
+Link: https://www.flaticon.com/free-icon/remove_1828843?term=cross&page=1&position=2&origin=tag&related_id=1828843

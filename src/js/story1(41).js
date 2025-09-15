@@ -59,3 +59,5 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     window.journeyMap2 = JourneyMap(canvas, ctx, config);
 });
+
+

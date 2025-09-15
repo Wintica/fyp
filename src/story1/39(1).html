@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Through Their Lens - Chapter 1</title>
+  <link href="../../dist/styles.css" rel="stylesheet">
+</head>
+
+  <!-- Navigation Bar -->
+  <nav class="bg-gray-900 relative z-10">
+    <div class="max-w-7xl mx-auto flex items-center justify-between py-2 sm:py-4 px-4 sm:px-6">
+      <span class="text-white text-lg sm:text-xl font-bold">Through Their Lens</span>
+      <!-- Hamburger Button  -->
+      <button id="menu-toggle" class="sm:hidden text-white focus:outline-none ml-2" aria-label="Open menu">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <!-- Navigation Links -->
+      <ul id="nav-menu" class="hidden sm:flex space-x-4 sm:space-x-6 lg:space-x-8 bg-gray-900 sm:bg-transparent absolute sm:static top-full left-0 w-full sm:w-auto z-20 sm:z-auto">
+        <li><a href="../home.html" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-violet-400 hover:underline">Home</a></li>
+        <li><a href="#" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-violet-400 hover:underline">About</a></li>
+        <li><a href="#" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-violet-400 hover:underline">Services</a></li>
+        <li><a href="#" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-violet-400 hover:underline">Contacts</a></li>
+      </ul>
+    </div>
+  <script src="../js/navigation.js"></script>
+  </nav>
+
+  <!-- Main Content  -->
+  <div class="flex-1 flex flex-col relative z-20">
+   
+    <!-- Profile Icon -->
+    <div class="absolute top-4 sm:top-8 right-4 sm:right-8 z-30">
+      <a 
+        href="../profile.html"
+        class="flex items-center justify-center bg-white rounded-full w-12 h-12 sm:w-16 sm:h-16 shadow-lg hover:bg-blue-700 transition"
+        style="padding: 2px;"
+      >
+        <img 
+          src="../images/profile.png"
+          alt="Profile Icon"
+          class="w-full h-full object-contain"
+        />
+      </a>
+    </div>
+
+    <!-- Achievement Banner -->
+    <div id="achievementBanner" class="hidden fixed inset-x-0 top-20 mx-auto max-w-xl bg-gray-800 rounded-2xl px-4 py-3 shadow z-50" style="margin-bottom: 100px;">
+        <div class="flex items-center">
+            <div class="flex-shrink-0 w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center mr-4">
+                <img src="../images/achievement2.png" alt="Achievement" class="w-full h-full object-contain rounded-full">
+            </div>
+            <div class="flex-1">
+                <span class="text-white font-semibold">Achievement Unlock</span>
+                <span class="block text-gray-300 text-xs">10G - Built Trust and Understanding with Mrs Amelia Morgan</span>
+            </div>
+        </div>
+    </div>
+
+
+  <!-- Main Content Area -->
+    <div class="w-full flex flex-row items-center justify-between px-2 pt-8 pb-2">
+      <!-- Avatar and Text + Emoji -->
+      <div class="flex flex-row items-center w-full px-2 pt-6 pb-2">
+        <div class="flex flex-col sm:flex-row items-center justify-between w-full gap-6 sm:gap-0">
+          <!-- Avatar -->
+          <div class="flex-shrink-0 flex items-center justify-center w-full sm:w-auto mb-4 sm:mb-0">
+            <img src="../images/avatar1.png" alt="Avatar" class="h-auto object-contain select-none mx-auto" style="width: clamp(180px, 40vw, 340px);" />
+          </div>
+          <!-- Text + Emoji -->
+          <div class="flex flex-col items-center justify-center w-full sm:flex-1">
+            <span class="text-black font-extrabold text-3xl sm:text-6xl mb-2 text-center">I Feel Happy</span>
+            <img src="../images/happy.png" alt="Frustrated Emoji" class="h-auto object-contain select-none mx-auto" style="width: clamp(80px, 18vw, 160px);" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Dialogue Section  -->
+  <div class="w-full min-h-[50vh] bg-violet-900 rounded-t-3xl shadow-lg px-8 sm:px-12 lg:px-16 py-8 sm:py-12 lg:py-16 flex flex-col justify-between">
+  <p class="text-white italic text-base sm:text-lg lg:text-xl leading-relaxed mb-6 mt-0">
+       I feel happy… because for once, someone actually listened. You didn't cut me off, you didn't try to fix me, and you didn't make me feel like I was too much. That doesn't happen often.
+       Even though I came off as angry or defensive, deep down, I just wanted someone to see that I was struggling — that I felt like I was losing control of everything around me. And when I lashed out, it wasnt because I hated you… it was because I was scared. Tired. Frustrated. Hurt.
+       But you stayed. You listened. You didn't take it personally and that made me feel safe, even if just for a moment. Like maybe I'm not as alone as I thought.
+      </p>
+
+      <div class="flex justify-end mt-8">
+        <a href="40.html" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-200 text-lg">
+          Close
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/achievements.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Through Their Lens - Chapter 1</title>
+  <link href="../../dist/styles.css" rel="stylesheet">
+</head>
+
+  <!-- Navigation Bar -->
+  <nav class="bg-gray-900 relative z-10">
+    <div class="max-w-7xl mx-auto flex items-center justify-between py-2 sm:py-4 px-4 sm:px-6">
+      <span class="text-white text-lg sm:text-xl font-bold">Through Their Lens</span>
+      <!-- Hamburger Button  -->
+      <button id="menu-toggle" class="sm:hidden text-white focus:outline-none ml-2" aria-label="Open menu">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <!-- Navigation Links -->
+      <ul id="nav-menu" class="hidden sm:flex space-x-4 sm:space-x-6 lg:space-x-8 bg-gray-900 sm:bg-transparent absolute sm:static top-full left-0 w-full sm:w-auto z-20 sm:z-auto">
+        <li><a href="../home.html" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-violet-400 hover:underline">Home</a></li>
+        <li><a href="#" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-violet-400 hover:underline">About</a></li>
+        <li><a href="#" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-violet-400 hover:underline">Services</a></li>
+        <li><a href="#" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-violet-400 hover:underline">Contacts</a></li>
+      </ul>
+    </div>
+  <script src="../js/navigation.js"></script>
+  </nav>
+
+  <!-- Main Content  -->
+  <div class="flex-1 flex flex-col relative z-20">
+   
+    <!-- Profile Icon -->
+    <div class="absolute top-4 sm:top-8 right-4 sm:right-8 z-30">
+      <a 
+        href="../profile.html"
+        class="flex items-center justify-center bg-white rounded-full w-12 h-12 sm:w-16 sm:h-16 shadow-lg hover:bg-blue-700 transition"
+        style="padding: 2px;"
+      >
+        <img 
+          src="../images/profile.png"
+          alt="Profile Icon"
+          class="w-full h-full object-contain"
+        />
+      </a>
+    </div>
+
+  <!-- Main Content Area -->
+    <div class="w-full flex flex-row items-center justify-between px-2 pt-8 pb-2">
+      <!-- Avatar and Text + Emoji -->
+      <div class="flex flex-row items-center w-full px-2 pt-6 pb-2">
+        <div class="flex flex-col sm:flex-row items-center justify-between w-full gap-6 sm:gap-0">
+          <!-- Avatar -->
+          <div class="flex-shrink-0 flex items-center justify-center w-full sm:w-auto mb-4 sm:mb-0">
+            <img src="../images/avatar1.png" alt="Avatar" class="h-auto object-contain select-none mx-auto" style="width: clamp(180px, 40vw, 340px);" />
+          </div>
+          <!-- Text + Emoji -->
+          <div class="flex flex-col items-center justify-center w-full sm:flex-1">
+            <span class="text-black font-extrabold text-3xl sm:text-6xl mb-2 text-center">I Feel Defeated</span>
+            <img src="../images/confounded.png" alt="Frustrated Emoji" class="h-auto object-contain select-none mx-auto" style="width: clamp(80px, 18vw, 160px);" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Dialogue Section  -->
+  <div class="w-full min-h-[50vh] bg-violet-900 rounded-t-3xl shadow-lg px-8 sm:px-12 lg:px-16 py-8 sm:py-12 lg:py-16 flex flex-col justify-between">
+  <p class="text-white italic text-base sm:text-lg lg:text-xl leading-relaxed mb-6 mt-0">
+      I feel defeated… because once again, nobody really heard me. You talked over me, you tried to fix me like I was broken, and you made me feel like I was just being difficult. This happens all the time.
+      Even though I tried to explain myself, you just saw the anger on the surface. You didn't see that I was struggling, that I felt like everything was slipping away from me. And when I got upset, you took it personally and got defensive right back. That made me feel like I was the problem.
+      But you left — emotionally, even if you stayed physically. You stopped listening. You made it about how hard this was for you, and that made me feel more alone than ever. Like I really am just a burden that everyone has to endure.
+
+      </p>
+      
+      <div class="flex justify-end mt-8">
+        <a href="29.html" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-200 text-lg">
+          Try Again
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>

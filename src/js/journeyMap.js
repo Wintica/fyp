@@ -459,7 +459,8 @@ function JourneyMap(canvas, ctx, config) {
             nextBtn.textContent = 'Continue';
             nextBtn.disabled = false;
             nextBtn.onclick = function() {
-                window.location.href = '24.html';
+                const nextPage = nextBtn.getAttribute('data-next-page') || '24.html';
+                window.location.href = nextPage;
             };
         } else if (gameState.isAnimating) {
             nextBtn.textContent = 'Moving...';

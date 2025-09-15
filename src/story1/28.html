@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Through Their Lens - Achievement</title>
+    <link href="../../dist/styles.css" rel="stylesheet">    
+    <style>
+        #line1, #line2, #line3 {
+            transform-origin: left center;
+            transition: transform 1s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-black min-h-screen">
+  <!-- Navigation Bar -->
+  <nav class="bg-gray-900 relative z-10">
+    <div class="max-w-7xl mx-auto flex items-center justify-between py-2 sm:py-4 px-4 sm:px-6">
+      <span class="text-white text-lg sm:text-xl font-bold">Through Their Lens</span>
+      <!-- Hamburger Button  -->
+      <button id="menu-toggle" class="sm:hidden text-white focus:outline-none ml-2" aria-label="Open menu">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <!-- Navigation Links -->
+      <ul id="nav-menu" class="hidden sm:flex space-x-4 sm:space-x-6 lg:space-x-8 bg-gray-900 sm:bg-transparent absolute sm:static top-full left-0 w-full sm:w-auto z-20 sm:z-auto">
+        <li><a href="../home.html" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-violet-400 hover:underline">Home</a></li>
+        <li><a href="#" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-violet-400 hover:underline">About</a></li>
+        <li><a href="#" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-violet-400 hover:underline">Services</a></li>
+        <li><a href="#" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-violet-400 hover:underline">Contacts</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content  -->
+  <div class="flex-1 flex flex-col relative z-20">
+   
+    <!-- Profile Icon -->
+    <div class="absolute top-4 sm:top-8 right-4 sm:right-8 z-30">
+      <a 
+        href="../profile.html"
+        class="flex items-center justify-center bg-white rounded-full w-12 h-12 sm:w-16 sm:h-16 shadow-lg hover:bg-blue-700 transition"
+        style="padding: 2px;"
+      >
+        <img 
+          src="../images/profile.png"
+          alt="Profile Icon"
+          class="w-full h-full object-contain"
+        />
+      </a>
+    </div>
+
+    <!-- Achievement Banner -->
+    <div id="achievementBanner" class="hidden fixed inset-x-0 top-20 mx-auto max-w-xl bg-gray-800 rounded-2xl px-4 py-3 shadow z-50" style="margin-bottom: 100px;">
+        <div class="flex items-center">
+            <div class="flex-shrink-0 w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center mr-4">
+                <img src="../images/achievement1.png" alt="Achievement" class="w-full h-full object-contain rounded-full">
+            </div>
+            <div class="flex-1">
+                <span class="text-white font-semibold">Achievement Unlock</span>
+                <span class="block text-gray-300 text-xs">10G - Resolved Mrs Amelia Morgan's Negative Emotions</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Laptop/Tablet Version -->
+    <div class="relative w-full max-w-3xl mx-auto min-h-[600px]" style="height:600px; margin-top: 150px;">
+        <!-- Dot 1 & Text 1 -->
+        <div id="dot1" class="hidden sm:block absolute left-[295px] top-[62px] sm:left-[295px] sm:top-[62px] w-5 h-5 bg-yellow-400 rounded-full opacity-0 transition-all duration-700 md:left-[295px] md:top-[62px] lg:left-[295px] lg:top-[62px] xl:left-[295px] xl:top-[62px]"></div>
+        <p id="text1" class="hidden sm:block absolute left-[40px] top-[40px] sm:left-[40px] sm:top-[40px] text-white font-extrabold text-xl sm:text-2xl leading-tight opacity-0 transition-all duration-700 text-left">It seems like  you<br>have resolve all the<br>negative emotions</p>
+        <!-- Line 1 -->
+        <div id="line1" class="hidden sm:block absolute left-[307px] top-[74px] sm:left-[307px] sm:top-[74px] h-2 bg-yellow-400 z-20 opacity-0 transition-all duration-700 origin-left" style="width:155px; transform:rotate(25deg); opacity:0;"></div>
+        
+        <!-- Dot 2 & Text 2 -->
+        <div id="dot2" class="hidden sm:block absolute left-[430px] top-[160px] sm:left-[430px] sm:top-[160px] w-5 h-5 bg-yellow-400 rounded-full opacity-0 transition-all duration-700"></div>
+        <p id="text2" class="hidden sm:block absolute left-[460px] top-[150px] sm:left-[460px] sm:top-[150px] text-white font-extrabold text-xl sm:text-2xl leading-tight opacity-0 transition-all duration-700 text-left">However, what could be done differently?</p>
+        <!-- Line 2 -->
+        <div id="line2" class="hidden sm:block absolute left-[444px] top-[172px] sm:left-[444px] sm:top-[172px] h-2 bg-yellow-400 z-20 opacity-0 transition-all duration-700 origin-left" style="width:220px; transform:rotate(153deg); opacity:0;"></div>
+        
+        <!-- Dot 3 & Text 3 -->
+        <div id="dot3" class="hidden sm:block absolute left-[180px] top-[312px] sm:left-[180px] sm:top-[312px] w-5 h-5 bg-yellow-400 rounded-full opacity-0 transition-all duration-700"></div>
+        <p id="text3" class="hidden sm:block absolute left-[10px] top-[312px] sm:left-[40px] sm:top-[290px] text-white font-extrabold text-xl sm:text-2xl leading-tight opacity-0 transition-all duration-700 text-left">Let's revisit<br>the scenario</p>
+        <!-- Line 3 -->
+        <div id="line3" class="hidden sm:block absolute left-[192px] top-[324px] sm:left-[192px] sm:top-[324px] h-2 bg-yellow-400 z-20 opacity-0 transition-all duration-700 origin-left" style="width:270px; transform:rotate(0deg); opacity:0;"></div>
+        
+        <!-- Dot 4 & Next Button -->
+        <div id="dot4" class="hidden sm:block absolute left-[430px] top-[540px] sm:left-[430px] sm:top-[540px] w-5 h-5 bg-yellow-400 rounded-full opacity-0 transition-all duration-700"></div>
+        <button id="nextBtn" class="hidden sm:block absolute left-[480px] top-[530px] sm:left-[480px] sm:top-[530px] opacity-0 transition-all duration-700 bg-white text-black font-bold px-6 py-2 rounded hover:bg-yellow-400 hover:shadow-lg transform hover:scale-105">Next</button>
+
+        <!-- Mobile version -->
+        <div class="block sm:hidden">
+             <!-- Dot 1 & Text 1 -->
+            <div id="dot1m" class="absolute left-1/2 -translate-x-1/2 top-[60px] w-5 h-5 bg-yellow-400 rounded-full opacity-0 transition-all duration-700"></div>
+            <p id="text1m" class="absolute left-[20px] top-[60px] text-white font-extrabold text-lg leading-tight opacity-0 transition-all duration-700 text-left">It seems like<br> you have<br> resolve all<br> the negative<br> emotions</p>
+            
+              <!-- Line 1 -->
+            <div id="line1m" class="absolute h-2 bg-yellow-400 z-20 opacity-0 transition-all duration-700 origin-left" style="width:0px;"></div>
+            <div id="dot2m" class="absolute left-1/2 -translate-x-1/2 top-[160px] w-5 h-5 bg-yellow-400 rounded-full opacity-0 transition-all duration-700"></div>
+            <p id="text2m" class="absolute left-[calc(50%+20px)] top-[160px] text-white font-extrabold text-lg leading-tight opacity-0 transition-all duration-700 text-left">However, what could be done differently?</p>
+            <div id="line2m" class="absolute h-2 bg-yellow-400 z-20 opacity-0 transition-all duration-700 origin-left" style="width:0px;"></div>
+            <div id="dot3m" class="absolute left-1/2 -translate-x-1/2 top-[260px] w-5 h-5 bg-yellow-400 rounded-full opacity-0 transition-all duration-700"></div>
+            <p id="text3m" class="absolute left-[20px] top-[260px] text-white font-extrabold text-lg leading-tight opacity-0 transition-all duration-700 text-left">Let's revisit<br>the scenario</p>
+            <div id="line3m" class="absolute h-2 bg-yellow-400 z-20 opacity-0 transition-all duration-700 origin-left" style="width:0px;"></div>
+            <div id="dot4m" class="absolute left-1/2 -translate-x-1/2 top-[360px] w-5 h-5 bg-yellow-400 rounded-full opacity-0 transition-all duration-700"></div>
+            <button id="nextBtnm" class="absolute left-1/2 -translate-x-1/2 top-[380px] opacity-0 transition-all duration-700 bg-white text-black font-bold px-6 py-2 rounded hover:bg-yellow-400 hover:shadow-lg transform hover:scale-105">Next</button>
+        </div>
+    </div>
+  </div>
+
+  <script src="../js/navigation.js"></script>
+  <script src="../js/dots.js"></script>
+  <script src="../js/achievements.js"></script>
+</body>
+</html>
+

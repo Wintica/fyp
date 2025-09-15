@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Through Their Lens - Chapter 1</title>
+  <link href="../../dist/styles.css" rel="stylesheet">
+</head>
+
+
+<body class="bg-gradient-to-r from-gray-100 to-gray-300 min-h-screen">
+
+  <!-- Navigation Bar -->
+  <nav class="bg-gray-900 relative z-10">
+    <div class="max-w-7xl mx-auto flex items-center justify-between py-2 sm:py-4 px-4 sm:px-6">
+      <span class="text-white text-lg sm:text-xl font-bold">Through Their Lens</span>
+      <!-- Hamburger Button  -->
+      <button id="menu-toggle" class="sm:hidden text-white focus:outline-none ml-2" aria-label="Open menu">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <!-- Navigation Links -->
+      <ul id="nav-menu" class="hidden sm:flex space-x-4 sm:space-x-6 lg:space-x-8 bg-gray-900 sm:bg-transparent absolute sm:static top-full left-0 w-full sm:w-auto z-20 sm:z-auto">
+        <li><a href="../home.html" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-violet-400 hover:underline">Home</a></li>
+        <li><a href="#" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-violet-400 hover:underline">About</a></li>
+        <li><a href="#" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-violet-400 hover:underline">Services</a></li>
+        <li><a href="#" class="block px-4 py-2 text-neutral-100 text-sm sm:text-base hover:text-violet-400 hover:underline">Contacts</a></li>
+      </ul>
+    </div>
+  <script src="../js/navigation.js"></script>
+  </nav>
+  
+
+  <!-- Main Content  -->
+  <div class="flex-1 flex flex-col relative z-20">
+   
+    <!-- Profile Icon -->
+    <div class="absolute top-4 sm:top-8 right-4 sm:right-8 z-30">
+      <a 
+        href="../profile.html"
+        class="flex items-center justify-center bg-white rounded-full w-12 h-12 sm:w-16 sm:h-16 shadow-lg hover:bg-blue-700 transition"
+        style="padding: 2px;"
+      >
+        <img 
+          src="../images/profile.png"
+          alt="Profile Icon"
+          class="w-full h-full object-contain"
+        />
+      </a>
+    </div>
+
+
+       <!-- Main Content Area -->
+       <section class="bg-red-500 text-white rounded-lg p-6 shadow-lg max-w-2xl w-full flex flex-col justify-center items-center mx-auto mt-24 sm:mt-32 mb-8">
+          <h2 class="text-xl font-bold mb-4 text-center">Why This DOESN'T Work</h2>
+          <div class="flex items-center justify-center mb-4">
+            <img src="../images/wrong.png" alt="Wrong Icon" class="w-16 h-16">
+          </div>
+          <div class="w-full max-h-[90vh] overflow-y-auto">
+            <ul class="list-decimal pl-6 space-y-4 text-left">
+              <li>
+                <span class="font-semibold">Direct Confrontation with Memory Loss</span>
+                <ul class="list-disc pl-6 space-y-2">
+                  <li class="block text-sm">Lists specific failures ("forgot breakfast," "can't find clothes") which creates shame</li>
+                  <li class="block text-sm">Forces Amelia to confront her deficits directly, causing distress and anxiety</li>
+                  <li class="block text-sm">Research shows confronting memory loss increases agitation and behavioral symptoms</li>
+                </ul>
+              </li>
+              <li>
+                <span class="font-semibold">Argumentative Approach</span>
+                <ul class="list-disc pl-6 space-y-2">
+                  <li class="block text-sm">"Yes, you DO need help!" creates a power struggle and defensive response</li>
+                  <li class="block text-sm">Turns the interaction into a win-lose battle rather than collaboration</li>
+                  <li class="block text-sm">Harvard research shows confrontation "avoid[s] a standoff" and should be avoided</li>
+                </ul>
+              </li>
+              <li>
+                <span class="font-semibold">Memory Testing Through Examples</span>
+                <ul class="list-disc pl-6 space-y-2">
+                  <li class="block text-sm">Listing forgotten tasks forces her to acknowledge memory failures</li>
+                  <li class="block text-sm">Creates learned helplessness and depression about her condition</li>
+                  <li class="block text-sm">Violates the cardinal rule: "Do not test the memory of persons living with dementia"</li>
+                </ul>
+              </li>
+              <li>
+                <span class="font-semibold">Overwhelming Information</span>
+                <ul class="list-disc pl-6 space-y-2">
+                  <li class="block text-sm">Multiple examples at once overwhelm her processing ability</li>
+                  <li class="block text-sm">Creates cognitive overload when she's already struggling</li>
+                  <li class="block text-sm">Goes against guidance to "keep sentences short and simple"</li>
+                </ul>
+              </li>
+            </ul>
+         
+          <div class="mt-4 bg-red-700 text-white text-center py-2 rounded-md w-full">
+            <span class="font-bold">Consequence:</span>
+            <span>Damages Trust & Communication</span>
+          </div>
+
+          <!-- Next Button -->
+          <div class="mt-4 flex justify-end w-full">
+            <a href="38(2).html" 
+               class="bg-white text-black px-6 py-2 rounded-lg hover:bg-gray-50">
+              Next
+            </a>
+          </div>
+        </section>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
