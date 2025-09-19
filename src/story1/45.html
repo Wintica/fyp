@@ -7,7 +7,8 @@
   <link href="../../dist/styles.css" rel="stylesheet">
 </head>
 
-<body class="bg-black">
+<body class="min-h-screen flex flex-col bg-center bg-no-repeat bg-cover relative" style="background-image: url('../images/flagstone.jpg');">
+  
   <!-- Navigation Bar -->
   <nav class="bg-gray-900 relative z-10">
     <div class="max-w-7xl mx-auto flex items-center justify-between py-2 sm:py-4 px-4 sm:px-6">
@@ -25,19 +26,13 @@
       </ul>
     </div>
   <script src="../js/navigation.js"></script>
+  <script src="../js/balanceGame.js"></script>
   </nav>
   
-
   <!-- Main Content  -->
-  <div class="flex flex-col items-center justify-center min-h-[80vh] relative z-20 w-full">
-    <div class="flex flex-col items-center justify-center w-full h-full">
-    <h1 class="text-white text-xl md:text-5xl font-bold mb-8">Back To The Story</h1>
-      <a href="43.html">
-        <button class="bg-purple-900 text-white text-xl font-semibold px-12 py-3 rounded-lg shadow-md hover:bg-purple-800 focus:outline-none">Begin</button>
-      </a>
-    </div>
-    
-     <!-- Profile Icon -->
+  <div class="flex flex-col min-h-screen relative z-40">
+   
+    <!-- Profile Icon -->
     <div class="absolute top-4 sm:top-8 right-4 sm:right-8 z-50">
       <a 
         href="../profile.html"
@@ -52,7 +47,50 @@
       </a>
     </div>
 
-  </div>
-</div>
+    <!-- Main Content Area -->
+    <div class="flex-1">
+      <!-- Balance Mini-Game Section -->
+      <div class="w-full max-w-3xl mx-auto px-4 mt-24 mb-8">
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h2 class="text-xl font-bold text-center mb-4">Help Amelia Keep Her Balance!</h2>
+          
+          <!-- Game Instructions -->
+          <div class="mb-4 text-center text-gray-600">
+            <p>Use Left and Right Arrow Keys to balance</p>
+            <p class="text-sm">Or tap left/right side of the screen on mobile</p>
+          </div>
+
+          <!-- Game Canvas Container -->
+          <div class="relative w-full" style="height: 300px;">
+            <canvas 
+              id="gameCanvas" 
+              class="absolute inset-0 w-full h-full border-2 border-gray-200 rounded-lg"
+              width="800"
+              height="500">
+            </canvas>
+           <button 
+              id="startGame"
+              class="absolute px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+              style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+              Start Game
+           </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Avatar and Dialogue Section -->
+    <div class="w-full mt-auto">
+      <!-- Dialogue Section -->
+      <div class="bg-white rounded-t-xl shadow-lg" style="height: calc(33vh);">
+        <!-- Dialogue text -->
+        <div class="px-8 sm:px-12 lg:px-16 py-6 sm:py-8 text-left w-full">
+          <p class="text-black text-sm sm:text-lg lg:text-xl leading-relaxed">
+            I take a hesitant step forward, then another and the world shifts. The neat rows of stones blur at the edges. My foot catches on a leaf I didn't notice, and I stumble. Panic flares in my chest as I grasp for balance, arms flailing.
+          </p>
+        </div>
+      </div>
+    </div>
+
 </body>
 </html>

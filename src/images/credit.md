@@ -13,6 +13,16 @@ Photo by: Uniconlabs
 Published on: -
 Link: https://www.flaticon.com/free-icon/comprehend_12841735?term=understanding&page=1&position=94&origin=search&related_id=12841735
 
+0) achievement3.png
+Photo by: Uniconlabs
+Published on: -
+Link: https://www.flaticon.com/free-icon/reflect_12841960?term=self+reflection&related_id=12841960
+
+0) achievement4.png
+Photo by: Muhammad_Usman
+Published on: -
+Link: https://www.flaticon.com/free-icon/chapter_9934212?term=chapter&related_id=9934212
+
 1) angry.png
 Photo by: riajulislam
 Published on:
@@ -68,6 +78,11 @@ Photo by: juicy_fish
 Published on: -
 Link: https://www.flaticon.com/free-icon/flag_15141644?term=finishing+flag&page=6&position=69&origin=search&related_id=15141644
 
+0) flagstone.jpg
+Photo by: Craig Tidball
+Published on: January 28, 2018
+Link: https://unsplash.com/photos/yellow-leaves-on-ground-Nls6Iix-Y1w
+
 4) flower.jpg
 Photo by: Annie Spratt
 Published on: November 19, 2015
@@ -77,6 +92,11 @@ Link: https://unsplash.com/photos/selective-photography-of-purple-petaled-flower
 Photo by: justicon
 Published on: -
 Link: https://www.flaticon.com/free-icon/face_14862469?term=emoji+disappointed&page=1&position=16&origin=search&related_id=14862469
+
+0) grab.png
+Photo by: Kiranshastry
+Published on: -
+Link: https://www.flaticon.com/free-icon/grab_1612799?term=grab&page=1&position=25&origin=tag&related_id=1612799
 
 0) happy.png
 Photo by: NajmunNahar

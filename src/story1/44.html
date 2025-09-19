@@ -7,7 +7,8 @@
   <link href="../../dist/styles.css" rel="stylesheet">
 </head>
 
-<body class="bg-black">
+<body class="min-h-screen flex flex-col bg-center bg-no-repeat bg-cover relative" style="background-image: url('../images/flagstone.jpg');">
+  
   <!-- Navigation Bar -->
   <nav class="bg-gray-900 relative z-10">
     <div class="max-w-7xl mx-auto flex items-center justify-between py-2 sm:py-4 px-4 sm:px-6">
@@ -27,17 +28,10 @@
   <script src="../js/navigation.js"></script>
   </nav>
   
-
   <!-- Main Content  -->
-  <div class="flex flex-col items-center justify-center min-h-[80vh] relative z-20 w-full">
-    <div class="flex flex-col items-center justify-center w-full h-full">
-    <h1 class="text-white text-xl md:text-5xl font-bold mb-8">Back To The Story</h1>
-      <a href="43.html">
-        <button class="bg-purple-900 text-white text-xl font-semibold px-12 py-3 rounded-lg shadow-md hover:bg-purple-800 focus:outline-none">Begin</button>
-      </a>
-    </div>
-    
-     <!-- Profile Icon -->
+  <div class="flex-1 flex flex-col relative z-40">
+   
+    <!-- Profile Icon -->
     <div class="absolute top-4 sm:top-8 right-4 sm:right-8 z-50">
       <a 
         href="../profile.html"
@@ -52,7 +46,28 @@
       </a>
     </div>
 
-  </div>
-</div>
+
+  <!-- Main Content Area -->
+  <a href="45.html" class="flex-1 cursor-pointer">
+    
+    <!-- Avatar and Dialogue Section -->
+    <div class="fixed inset-x-0 bottom-0 z-50 flex flex-col h-screen pt-20 sm:pt-24 pointer-events-none">
+      <!-- Spacer for background visibility -->
+      <div class="flex-1"></div>
+      
+      <!-- Dialogue Section -->
+       <div class="h-1/3 bg-violet-900 rounded-t-xl shadow-lg pointer-events-auto relative">
+        
+        <!-- Dialogue text -->
+        <div class="px-8 sm:px-12 lg:px-16 py-8 sm:py-12 lg:py-16 text-left h-full flex items-start justify-start">
+          <p class="text-white text-sm sm:text-lg lg:text-xl leading-relaxed">
+             ** I place my foot on the first flagstone, its cool surface reassuringly familiar under my shoe. Yet today, something feels off—a faint tug at the back of my mind. Had a crack formed along the edge? I stop and study the stones more closely.
+             My gaze drifts to the scattered leaves lining the path. Had I forgotten to sweep them away this morning? A sudden flutter of worry warms my chest. Inside, everything was so orderly. Why did I only see this now? **
+          </p>
+        </div>
+      </div>
+    </div>
+  </a>
+
 </body>
 </html>

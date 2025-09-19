@@ -6,9 +6,9 @@
   <title>Through Their Lens - Chapter 1</title>
   <link href="../../dist/styles.css" rel="stylesheet">
 </head>
-
-<body class="bg-black">
-  <!-- Navigation Bar -->
+<body class="bg-black min-h-screen flex flex-col">
+  
+ <!-- Navigation Bar -->
   <nav class="bg-gray-900 relative z-10">
     <div class="max-w-7xl mx-auto flex items-center justify-between py-2 sm:py-4 px-4 sm:px-6">
       <span class="text-white text-lg sm:text-xl font-bold">Through Their Lens</span>
@@ -25,20 +25,13 @@
       </ul>
     </div>
   <script src="../js/navigation.js"></script>
-  </nav>
-  
+  </nav> 
 
   <!-- Main Content  -->
-  <div class="flex flex-col items-center justify-center min-h-[80vh] relative z-20 w-full">
-    <div class="flex flex-col items-center justify-center w-full h-full">
-    <h1 class="text-white text-xl md:text-5xl font-bold mb-8">Back To The Story</h1>
-      <a href="43.html">
-        <button class="bg-purple-900 text-white text-xl font-semibold px-12 py-3 rounded-lg shadow-md hover:bg-purple-800 focus:outline-none">Begin</button>
-      </a>
-    </div>
-    
-     <!-- Profile Icon -->
-    <div class="absolute top-4 sm:top-8 right-4 sm:right-8 z-50">
+  <div class="flex-1 flex flex-col relative z-20">
+   
+    <!-- Profile Icon -->
+    <div class="absolute top-4 sm:top-8 right-4 sm:right-8 z-30">
       <a 
         href="../profile.html"
         class="flex items-center justify-center bg-white rounded-full w-12 h-12 sm:w-16 sm:h-16 shadow-lg hover:bg-blue-700 transition"
@@ -51,8 +44,24 @@
         />
       </a>
     </div>
+   
+    <!-- Dialogue Text -->
+    <a href="67.html" 
+      class="fixed inset-x-0 flex justify-center z-50" style="top: 40vh;">
+      <div class="bg-white rounded-xl shadow-lg max-w-7xl px-8 sm:px-12 lg:px-16 py-8 sm:py-10 lg:py-12 mx-4 sm:mx-6 lg:mx-8 text-center">
+        <p class="text-black text-lg sm:text-xl lg:text-2xl font-semibold px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4">
+         I hear soft footsteps approaching, and within moments, Sarah's hand slips into mine. Her touch is warm, steady.
+        </p>
+      </div>
+    </a>
 
   </div>
-</div>
+
+
+  <!-- Footer -->
+  <footer class="max-w-7xl mx-auto w-full px-6 py-4 text-center text-gray-400 text-sm">
+    &copy; 2025 Through Their Lens. All rights reserved.
+  </footer>
+
 </body>
 </html>
