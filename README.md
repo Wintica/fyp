@@ -31,4 +31,10 @@ https://database-c8ff8.web.app
 3. Install dependencies:
    npm install
 
+4. Start development server:
+   npm run dev
+
+
+
+
 
