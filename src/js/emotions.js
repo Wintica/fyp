@@ -1,7 +1,4 @@
-// emotions.js
-// Handles emotion button logic for 25.html and close button logic for 27(1-4).html
 
-// --- 25.html logic ---
 if (window.location.pathname.endsWith('25.html')) {
   // If coming from 24.html, reset all emotion removal flags
   if (document.referrer && document.referrer.endsWith('24.html')) {

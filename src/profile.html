@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empathy Simulation Prototype</title>
+     <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#007cba',
+            secondary: '#7c3aed',
+          }
+        }
+      }
+    }
+  </script>
+   
+</head>
+
+  <style>
+    /* Custom animations and gradients */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+    .animate-slide-in {
+      animation: slideIn 0.6s ease-out;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #007cba 0%, #7c3aed 100%);
+    }
+    .progress-gradient-1 {
+      background: linear-gradient(90deg, #007cba, #0891b2);
+    }
+    .progress-gradient-2 {
+      background: linear-gradient(90deg, #7c3aed, #8b5cf6);
+    }
+    .achievement-glow {
+      box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+    }
+  </style>
+  
+  <!-- Firebase Compatibility SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <!-- PDF Generation Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- Unified Session Manager -->
+  <script src="js/unifiedSession.js"></script>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen">
+  <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+    <!-- Personal Header Section -->
+    <div class="gradient-bg text-white p-6 sm:p-8 lg:p-10 rounded-2xl shadow-2xl mb-6 sm:mb-8 animate-fade-in">
+      <div class="text-center">
+        <div class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4" id="welcome-message">Welcome to Your Journey</div>
+        <div class="text-lg sm:text-xl lg:text-2xl opacity-90">Personal Empathy Profile</div>
+        <div class="text-sm sm:text-base lg:text-lg opacity-75 mt-2">Your personal progress and insights dashboard</div>
+        <div class="text-base sm:text-lg font-semibold mt-3 sm:mt-4 bg-white bg-opacity-20 rounded-lg px-3 sm:px-4 py-2 inline-block" id="user-id-display">Loading...</div>
+      </div>
+    </div>
+    
+    <!-- Quick Actions Section -->
+    <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+      <button onclick="loadMyData()" class="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 sm:px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base">
+        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+        </svg>
+        Refresh My Data
+      </button>
+      <button onclick="createFreshSession()" class="w-full sm:w-auto bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-4 sm:px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base">
+        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+        </svg>
+        New Session
+      </button>
+      <button onclick="exportMyData()" class="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-700 hover:from-indigo-700 hover:to-purple-800 text-white px-4 sm:px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base">
+        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        </svg>
+        Export as PDF
+      </button>
+      <button onclick="shareProgress()" class="w-full sm:w-auto bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-4 sm:px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2 text-sm sm:text-base">
+        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+        </svg>
+        Share Progress
+      </button>
+    </div>
+    
+    <!-- Personal Statistics Section -->
+    <div class="bg-white rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8 animate-fade-in" id="personal-stats-section" style="display: none;">
+      <div class="text-center mb-6 sm:mb-8">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-2">Your Empathy Journey Progress</h2>
+        <p class="text-sm sm:text-base lg:text-lg text-gray-600">Track your personal growth and development</p>
+      </div>
+      
+      <!-- Achievement Banner -->
+      <div class="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-white rounded-xl p-4 sm:p-6 mb-6 sm:mb-8 achievement-glow" id="achievement-banner" style="display: none;">
+        <div class="text-center">
+          <div class="text-2xl sm:text-3xl lg:text-4xl mb-2">Achievement Unlocked</div>
+          <div class="text-lg sm:text-xl font-bold" id="achievement-text">Great Progress!</div>
+          <div class="text-xs sm:text-sm opacity-90" id="achievement-description">You're making excellent progress in your empathy journey</div>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
+        <!-- Exercise 1 Personal Card -->
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 sm:p-6 border-l-4 border-blue-500 shadow-lg animate-slide-in">
+          <div class="text-lg sm:text-xl font-bold text-gray-800 mb-4 flex flex-col sm:flex-row items-start sm:items-center gap-2">
+            <span class="text-xl sm:text-2xl">Exercise 1</span>
+            <span class="text-sm sm:text-base lg:text-lg">Emotion Recognition</span>
+          </div>
+          <div class="space-y-3 sm:space-y-4">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
+              <span class="font-medium text-gray-700 text-sm sm:text-base">Your Progress:</span>
+              <span class="font-bold text-gray-900 text-sm sm:text-base" id="my-ex1-completed">0/4</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-3 sm:h-4 overflow-hidden">
+              <div class="progress-gradient-1 h-full rounded-full flex items-center justify-center text-white text-xs font-bold transition-all duration-500" id="my-ex1-progress" style="width: 0%;">0%</div>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
+              <span class="font-medium text-gray-700 text-sm sm:text-base">Responses Given:</span>
+              <span class="font-bold text-gray-900 text-sm sm:text-base" id="my-ex1-responses">0</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
+              <span class="font-medium text-gray-700 text-sm sm:text-base">Last Activity:</span>
+              <span class="font-bold text-gray-900 text-xs sm:text-sm" id="my-ex1-last-activity">Never</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Exercise 2 Personal Card -->
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 sm:p-6 border-l-4 border-purple-500 shadow-lg animate-slide-in">
+          <div class="text-lg sm:text-xl font-bold text-gray-800 mb-4 flex flex-col sm:flex-row items-start sm:items-center gap-2">
+            <span class="text-xl sm:text-2xl"> Exercise 2</span>
+            <span class="text-sm sm:text-base lg:text-lg">Empathy Development</span>
+          </div>
+          <div class="space-y-3 sm:space-y-4">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
+              <span class="font-medium text-gray-700 text-sm sm:text-base">Inputs Completed:</span>
+              <span class="font-bold text-gray-900 text-sm sm:text-base" id="my-ex2-inputs">0/14</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-3 sm:h-4 overflow-hidden">
+              <div class="progress-gradient-2 h-full rounded-full flex items-center justify-center text-white text-xs font-bold transition-all duration-500" id="my-ex2-progress" style="width: 0%;">0%</div>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
+              <span class="font-medium text-gray-700 text-sm sm:text-base">Pages Completed:</span>
+              <span class="font-bold text-gray-900 text-sm sm:text-base" id="my-ex2-completed">0/5</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-0">
+              <span class="font-medium text-gray-700 text-sm sm:text-base">Last Activity:</span>
+              <span class="font-bold text-gray-900 text-xs sm:text-sm" id="my-ex2-last-activity">Never</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Personal Summary Stats -->
+      <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-4 sm:p-6 shadow-lg">
+        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-4 sm:mb-6 text-center">Your Personal Summary</h3>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+          <div class="text-center bg-white rounded-lg p-3 sm:p-4 shadow-md">
+            <div class="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-600" id="my-total-responses">0</div>
+            <div class="text-xs sm:text-sm text-gray-600 mt-1">Total Responses</div>
+          </div>
+          <div class="text-center bg-white rounded-lg p-3 sm:p-4 shadow-md">
+            <div class="text-xl sm:text-2xl lg:text-3xl font-bold text-green-600" id="my-completion-rate">0%</div>
+            <div class="text-xs sm:text-sm text-gray-600 mt-1">Overall Completion</div>
+          </div>
+          <div class="text-center bg-white rounded-lg p-3 sm:p-4 shadow-md">
+            <div class="text-xl sm:text-2xl lg:text-3xl font-bold text-purple-600" id="my-active-days">0</div>
+            <div class="text-xs sm:text-sm text-gray-600 mt-1">Days Active</div>
+          </div>
+          <div class="text-center bg-white rounded-lg p-3 sm:p-4 shadow-md">
+            <div class="text-xl sm:text-2xl lg:text-3xl font-bold text-orange-600" id="my-journey-score">0</div>
+            <div class="text-xs sm:text-sm text-gray-600 mt-1">Journey Score</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Personal Exercise 1 Section -->
+    <div class="bg-white rounded-2xl shadow-xl mb-6 sm:mb-8 overflow-hidden animate-fade-in">
+      <div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 sm:p-6">
+        <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+          <span>My Exercise 1: Emotion Recognition Journey</span>
+        </h2>
+        <p class="text-blue-100 mt-2 text-sm sm:text-base">Your personal responses and emotional insights</p>
+      </div>
+      <div class="p-4 sm:p-6 lg:p-8 bg-gray-50">
+        <div id="my-exercise1-data" class="text-center py-8 sm:py-12 text-gray-500">
+          <svg class="animate-spin -ml-1 mr-3 h-6 w-6 sm:h-8 sm:w-8 text-blue-500 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span class="text-sm sm:text-base">Loading your Exercise 1 journey...</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Personal Exercise 2 Section -->
+    <div class="bg-white rounded-2xl shadow-xl mb-6 sm:mb-8 overflow-hidden animate-fade-in">
+      <div class="bg-gradient-to-r from-purple-600 to-purple-700 text-white p-4 sm:p-6">
+        <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+          <span>My Exercise 2: Empathy Development Journey</span>
+        </h2>
+        <p class="text-purple-100 mt-2 text-sm sm:text-base">Your personal empathy growth and reflections</p>
+      </div>
+      <div class="p-4 sm:p-6 lg:p-8 bg-gray-50">
+        <div id="my-exercise2-data" class="text-center py-8 sm:py-12 text-gray-500">
+          <svg class="animate-spin -ml-1 mr-3 h-6 w-6 sm:h-8 sm:w-8 text-purple-500 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span class="text-sm sm:text-base">Loading your Exercise 2 journey...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Personal Insights Section -->
+    <div class="bg-white rounded-2xl shadow-xl mb-6 sm:mb-8 overflow-hidden animate-fade-in" id="insights-section" style="display: none;">
+      <div class="bg-gradient-to-r from-green-600 to-teal-600 text-white p-4 sm:p-6">
+        <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+          <span>Your Personal Insights</span>
+        </h2>
+        <p class="text-green-100 mt-2 text-sm sm:text-base">Personalized feedback based on your responses</p>
+      </div>
+      <div class="p-4 sm:p-6 lg:p-8">
+        <div id="personal-insights" class="space-y-4 sm:space-y-6">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/firebase/profile.js"></script>
+</body>
+</html>

@@ -6,6 +6,7 @@
   "scripts": {
     "build": "postcss src/css/styles.css -o dist/styles.css",
     "dev": "postcss src/css/styles.css -o dist/styles.css --watch",
+    "deploy": "npm run build && copy dist\\styles.css src\\styles.css && firebase deploy --only hosting",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

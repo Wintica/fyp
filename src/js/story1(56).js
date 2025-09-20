@@ -49,8 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         sequence: [
-            // {type: 'exercise', index: 0, name: 'Exercise 1'},
-            // {type: 'checkpoint', index: 1, name: 'Checkpoint 2'}
             {type: 'checkpoint', index: 1, name: 'Checkpoint 2'},
             {type: 'exercise', index: 1, name: 'Exercise 2'}
         ],

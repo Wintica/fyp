@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "database-c8ff8",
+    "staging": "database-c8ff8"
+  },
+  "targets": {},
+  "etags": {}
+}

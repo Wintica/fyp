@@ -1,0 +1,24 @@
+{
+  "hosting": {
+    "public": "src",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/story1/character",
+        "destination": "/story1/character.html"
+      },
+      {
+        "source": "/story1/story1",
+        "destination": "/story1/story1.html"
+      },
+      {
+        "source": "/story1/chapter1",
+        "destination": "/story1/chapter1.html"
+      }
+    ]
+  }
+}

@@ -10,7 +10,7 @@
         }, 5000);
     }
 
-    // Example: Trigger the banner when the page loads
+    // Trigger the banner when the page loads
     window.addEventListener('load', () => {
         showAchievementBanner();
     });
